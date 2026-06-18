@@ -10,394 +10,244 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:        #F5F2ED;
-      --surface:   #FFFFFF;
-      --surface-2: #ECEAE4;
-      --border:    #DDD9D1;
-      --text-1:    #1A1714;
-      --text-2:    #504C47;
-      --text-3:    #928E88;
-      --green-dk:  #1E4007;
-      --green:     #3B6D11;
-      --green-lt:  #E8F3DA;
-      --amber:     #B5720A;
-      --amber-lt:  #FDF1E1;
-      --blue:      #185FA5;
-      --blue-lt:   #E3EFFC;
-      --red:       #AA2C1A;
-      --red-lt:    #FCECE9;
-      --purple:    #4A42C0;
-      --purple-lt: #ECEAFE;
-      --teal:      #0B6046;
-      --teal-lt:   #DDF8EF;
-      --race-red:  #C0213B;
-      --race-lt:   #FDDBDF;
-      --fd: 'Syne', sans-serif;
-      --fb: 'Plus Jakarta Sans', sans-serif;
-      --fm: 'Space Mono', monospace;
-      --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+      --bg:#F5F2ED; --surface:#FFFFFF; --surface-2:#ECEAE4; --border:#DDD9D1;
+      --text-1:#1A1714; --text-2:#504C47; --text-3:#928E88;
+      --green-dk:#1E4007; --green:#3B6D11; --green-lt:#E8F3DA;
+      --amber:#B5720A; --amber-lt:#FDF1E1;
+      --blue:#185FA5; --blue-lt:#E3EFFC;
+      --red:#AA2C1A; --red-lt:#FCECE9;
+      --purple:#6B1F7A; --purple-lt:#F0E5FC;
+      --teal:#0B6046; --teal-lt:#DDF8EF;
+      --gray:#504C47; --gray-lt:#ECEAE4;
+      --race-red:#C0213B; --race-lt:#FDDBDF;
+      --fd:'Syne',sans-serif; --fb:'Plus Jakarta Sans',sans-serif; --fm:'Space Mono',monospace;
+      --r-sm:6px; --r-md:10px; --r-lg:16px;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--fb);
-      background: var(--bg);
-      color: var(--text-1);
-      font-size: 15px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    strong { font-weight: 600; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--fb); background:var(--bg); color:var(--text-1); font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    strong { font-weight:600; }
 
-    /* ── nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(245,242,237,.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      height: 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 max(20px, calc((100vw - 1160px)/2));
-    }
-    .nav-brand {
-      font-family: var(--fm); font-size: 12px; font-weight: 700;
-      color: var(--green); letter-spacing: .08em;
-    }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--text-2); font-weight: 500; transition: color .15s; }
-    .nav-links a:hover { color: var(--text-1); }
+    nav { position:sticky; top:0; z-index:100; background:rgba(245,242,237,.9); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); height:52px; display:flex; align-items:center; justify-content:space-between; padding:0 max(20px,calc((100vw - 1160px)/2)); }
+    .nav-brand { font-family:var(--fm); font-size:12px; font-weight:700; color:var(--green); letter-spacing:.08em; }
+    .nav-links { display:flex; gap:18px; list-style:none; flex-wrap:wrap; }
+    .nav-links a { font-size:13px; color:var(--text-2); font-weight:500; transition:color .15s; }
+    .nav-links a:hover { color:var(--text-1); }
+    .page { max-width:1160px; margin:0 auto; padding:0 20px; }
 
-    /* ── page wrapper ── */
-    .page { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    #hero { max-width:1160px; margin:0 auto; padding:64px 20px 0; }
+    .hero-eye { font-family:var(--fm); font-size:10px; color:var(--green); letter-spacing:.14em; text-transform:uppercase; margin-bottom:18px; }
+    .hero-title { font-family:var(--fd); font-size:clamp(54px,9vw,104px); font-weight:800; line-height:.92; letter-spacing:-.025em; margin-bottom:22px; }
+    .hero-title .accent { color:var(--green); }
+    .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:44px; }
+    .htag { font-size:13px; font-weight:500; padding:5px 13px; border:1px solid var(--border); border-radius:100px; color:var(--text-2); background:var(--surface); }
+    .htag.hi { background:var(--green); color:#fff; border-color:var(--green); }
+    .elev-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; }
+    .elev-top { display:flex; flex-wrap:wrap; align-items:center; gap:16px; padding:16px 24px 12px; }
+    .elev-top-label { font-size:12px; font-weight:600; color:var(--text-2); }
+    .elev-stat { font-family:var(--fm); font-size:11px; color:var(--text-3); }
+    .elev-stat strong { color:var(--amber); }
+    .elev-svg { display:block; width:100%; }
 
-    /* ── hero ── */
-    #hero { max-width: 1160px; margin: 0 auto; padding: 64px 20px 0; }
-    .hero-eye {
-      font-family: var(--fm); font-size: 10px; color: var(--green);
-      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 18px;
-    }
-    .hero-title {
-      font-family: var(--fd);
-      font-size: clamp(54px, 9vw, 104px);
-      font-weight: 800; line-height: .92; letter-spacing: -.025em;
-      margin-bottom: 22px;
-    }
-    .hero-title .accent { color: var(--green); }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
-    .htag {
-      font-size: 13px; font-weight: 500; padding: 5px 13px;
-      border: 1px solid var(--border); border-radius: 100px;
-      color: var(--text-2); background: var(--surface);
-    }
-    .htag.hi { background: var(--green); color: #fff; border-color: var(--green); }
-    /* elevation */
-    .elev-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
-    }
-    .elev-top {
-      display: flex; flex-wrap: wrap; align-items: center;
-      gap: 16px; padding: 16px 24px 12px;
-    }
-    .elev-top-label { font-size: 12px; font-weight: 600; color: var(--text-2); }
-    .elev-stat {
-      font-family: var(--fm); font-size: 11px; color: var(--text-3);
-    }
-    .elev-stat strong { color: var(--amber); }
-    .elev-svg { display: block; width: 100%; }
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:32px 0; }
+    .metric { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:20px 22px; }
+    .m-lbl { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--text-3); margin-bottom:8px; }
+    .m-val { font-family:var(--fm); font-size:30px; font-weight:700; color:var(--text-1); line-height:1; }
+    .m-sub { font-size:12px; color:var(--text-3); margin-top:4px; }
 
-    /* ── metrics ── */
-    .metrics {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 12px; padding: 32px 0;
-    }
-    .metric {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-md); padding: 20px 22px;
-    }
-    .m-lbl { font-size: 10px; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
-    .m-val {
-      font-family: var(--fm); font-size: 30px; font-weight: 700;
-      color: var(--text-1); line-height: 1;
-    }
-    .m-sub { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+    .section { padding:48px 0; border-top:1px solid var(--border); }
+    .sec-eye { font-family:var(--fm); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); margin-bottom:4px; }
+    .sec-title { font-family:var(--fd); font-size:28px; font-weight:700; color:var(--text-1); margin-bottom:24px; }
+    .sub-title { font-family:var(--fd); font-size:17px; font-weight:700; color:var(--text-1); margin:28px 0 14px; }
 
-    /* ── section ── */
-    .section { padding: 48px 0; border-top: 1px solid var(--border); }
-    .sec-eye {
-      font-family: var(--fm); font-size: 10px; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 4px;
-    }
-    .sec-title {
-      font-family: var(--fd); font-size: 28px; font-weight: 700;
-      color: var(--text-1); margin-bottom: 24px;
-    }
+    /* intro */
+    .intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+    .intro-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:22px; }
+    .intro-card-eye { font-family:var(--fm); font-size:10px; color:var(--text-3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+    .intro-card-title { font-family:var(--fd); font-size:16px; font-weight:700; color:var(--text-1); margin-bottom:10px; }
+    .intro-card-body { font-size:13px; color:var(--text-2); line-height:1.65; }
+    .stat-hl { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    .sh-item { background:var(--surface-2); border-radius:var(--r-sm); padding:10px 14px; }
+    .sh-val { font-family:var(--fm); font-size:20px; font-weight:700; color:var(--text-1); }
+    .sh-lbl { font-size:11px; color:var(--text-3); margin-top:2px; }
+    .phase-overview { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+    .po-col { border-radius:var(--r-sm); padding:14px 14px; }
+    .po-col .po-lbl { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; }
+    .po-col .po-run { font-size:12px; font-weight:600; margin-bottom:4px; }
+    .po-col .po-str { font-size:11px; }
+    .po-col.c1 { background:var(--amber-lt); } .po-col.c1 .po-lbl{color:#6B3F09;} .po-col.c1 .po-run,.po-col.c1 .po-str{color:var(--amber);}
+    .po-col.c2 { background:var(--purple-lt); } .po-col.c2 .po-lbl{color:#4A1257;} .po-col.c2 .po-run,.po-col.c2 .po-str{color:var(--purple);}
+    .po-col.c3 { background:var(--teal-lt); } .po-col.c3 .po-lbl{color:#063D2C;} .po-col.c3 .po-run,.po-col.c3 .po-str{color:var(--teal);}
+    .po-col.c4 { background:var(--gray-lt); } .po-col.c4 .po-lbl{color:#322F2B;} .po-col.c4 .po-run,.po-col.c4 .po-str{color:var(--gray);}
 
-    /* ── plan section ── */
-    .plan-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px; margin-bottom: 16px;
-    }
-    .plan-header .sec-title { margin-bottom: 0; }
-    .phase-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
-    .ptab {
-      padding: 6px 14px; border-radius: 100px;
-      border: 1px solid var(--border); font-size: 12px; font-weight: 500;
-      cursor: pointer; background: var(--surface); color: var(--text-2);
-      transition: all .15s; font-family: var(--fb);
-    }
-    .ptab:hover { background: var(--surface-2); }
-    .ptab.a-all { background: var(--text-1); color: #fff; border-color: var(--text-1); }
-    .ptab.a-p1  { background: var(--green);  color: #fff; border-color: var(--green); }
-    .ptab.a-p2  { background: var(--blue);   color: #fff; border-color: var(--blue); }
-    .ptab.a-p3  { background: var(--amber);  color: #fff; border-color: var(--amber); }
-    .ptab.a-p4  { background: var(--red);    color: #fff; border-color: var(--red); }
-    /* week structure strip */
-    .wk-struct {
-      display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
-      padding: 12px 16px; background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--r-md);
-      margin-bottom: 16px;
-    }
-    .ws-lbl { font-size: 11px; color: var(--text-3); font-weight: 500; margin-right: 4px; }
-    .ws-d {
-      font-size: 11px; font-weight: 600; padding: 3px 10px;
-      border-radius: 100px;
-    }
-    .ws-d.rest  { background: var(--surface-2); color: var(--text-2); }
-    .ws-d.easy  { background: var(--teal-lt);   color: var(--teal); }
-    .ws-d.key   { background: var(--blue-lt);   color: var(--blue); }
-    .ws-d.short { background: var(--green-lt);  color: var(--green-dk); }
-    .ws-d.long  { background: var(--amber-lt);  color: var(--amber); }
-    /* week cards */
-    .week-list { display: flex; flex-direction: column; gap: 10px; }
-    .wcard {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
-      border-left: 4px solid var(--border); transition: box-shadow .15s;
-    }
-    .wcard:hover { box-shadow: 0 2px 16px rgba(0,0,0,.07); }
-    .wcard.ph-p1  { border-left-color: var(--green); }
-    .wcard.ph-p2  { border-left-color: var(--blue); }
-    .wcard.ph-p3  { border-left-color: var(--amber); }
-    .wcard.ph-p4  { border-left-color: var(--red); }
-    .wcard.ph-rec { border-left-color: var(--text-3); }
-    .wcard.ph-race{ border-left-color: var(--race-red); }
-    .wcard.hidden { display: none; }
-    .wcard-head {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 18px; border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-    /* large bg week number */
-    .wcard-head::after {
-      content: attr(data-wnum);
-      position: absolute; right: 80px; top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--fm); font-size: 52px; font-weight: 700;
-      color: var(--border); opacity: .6; pointer-events: none;
-      letter-spacing: -.04em; line-height: 1;
-    }
-    .w-num {
-      font-family: var(--fm); font-size: 11px; font-weight: 700;
-      color: var(--text-3); letter-spacing: .04em; flex-shrink: 0;
-    }
-    .w-badge {
-      font-size: 10px; font-weight: 700; padding: 2px 8px;
-      border-radius: 100px; letter-spacing: .04em; flex-shrink: 0;
-    }
-    .ph-p1  .w-badge { background: var(--green-lt);  color: var(--green-dk); }
-    .ph-p2  .w-badge { background: var(--blue-lt);   color: var(--blue); }
-    .ph-p3  .w-badge { background: var(--amber-lt);  color: var(--amber); }
-    .ph-p4  .w-badge { background: var(--red-lt);    color: var(--red); }
-    .ph-rec .w-badge { background: var(--surface-2); color: var(--text-2); }
-    .ph-race .w-badge{ background: var(--race-lt);   color: var(--race-red); }
-    .w-focus { flex: 1; font-size: 11px; color: var(--text-2); font-style: italic; min-width: 0; }
-    .w-km {
-      font-family: var(--fm); font-size: 14px; font-weight: 700;
-      color: var(--text-1); flex-shrink: 0; z-index: 1;
-    }
-    /* progress bar */
-    .w-prog {
-      height: 2px; background: var(--border);
-      position: absolute; bottom: 0; left: 0; right: 0;
-    }
-    .w-prog-fill { height: 100%; }
-    .ph-p1  .w-prog-fill { background: var(--green); }
-    .ph-p2  .w-prog-fill { background: var(--blue); }
-    .ph-p3  .w-prog-fill { background: var(--amber); }
-    .ph-p4  .w-prog-fill { background: var(--red); }
-    .ph-rec .w-prog-fill { background: var(--text-3); }
-    .ph-race .w-prog-fill{ background: var(--race-red); }
-    .wcard-body { padding: 10px 18px 14px; }
-    /* day grid */
-    .day-grid {
-      display: grid; grid-template-columns: repeat(7,1fr); gap: 4px;
-    }
-    .day {
-      border-radius: var(--r-sm); padding: 6px 6px 7px;
-      min-height: 88px; display: flex; flex-direction: column;
-    }
-    .d-name {
-      font-family: var(--fm); font-size: 8px; font-weight: 700;
-      letter-spacing: .08em; margin-bottom: 4px;
-    }
-    .d-act { font-size: 10px; line-height: 1.3; font-weight: 500; flex: 1; }
-    .d-venue { font-size: 9px; font-weight: 500; margin-top: 3px; opacity: .85;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .d-stats { font-family: var(--fm); font-size: 9px; margin-top: 2px; }
-    .d-str {
-      font-size: 8px; font-weight: 700; padding: 1px 5px;
-      border-radius: 3px; margin-top: 3px; align-self: flex-start;
-      letter-spacing: .03em;
-    }
-    /* day type colors — explicit, no CSS vars that might fail */
-    .dt-rest   { background: #ECEAE4; }
-    .dt-rest   .d-name,.dt-rest   .d-act,.dt-rest .d-venue { color: #928E88; }
-    .dt-easy   { background: #E8F3DA; }
-    .dt-easy   .d-name { color: #3B6D11; }
-    .dt-easy   .d-act,.dt-easy .d-venue { color: #1E4007; }
-    .dt-easy   .d-stats { color: #3B6D11; }
-    .dt-tempo  { background: #E3EFFC; }
-    .dt-tempo  .d-name { color: #185FA5; }
-    .dt-tempo  .d-act,.dt-tempo .d-venue { color: #0A3D78; }
-    .dt-tempo  .d-stats { color: #185FA5; }
-    .dt-long   { background: #FDF1E1; }
-    .dt-long   .d-name { color: #B5720A; }
-    .dt-long   .d-act,.dt-long .d-venue { color: #6B3F09; }
-    .dt-long   .d-stats { color: #B5720A; }
-    .dt-hill   { background: #FCEAF3; }
-    .dt-hill   .d-name { color: #8C2E5B; }
-    .dt-hill   .d-act,.dt-hill .d-venue { color: #6D1F45; }
-    .dt-hill   .d-stats { color: #8C2E5B; }
-    .dt-race   { background: #FDDBDF; }
-    .dt-race   .d-name { color: #C0213B; }
-    .dt-race   .d-act,.dt-race .d-venue { color: #7A1225; }
-    .dt-race   .d-stats { color: #C0213B; }
-    .str-a  { background: #ECEAFE; color: #4A42C0; }
-    .str-b  { background: #DDF8EF; color: #0B6046; }
-    .str-lt { background: #ECEAE4; color: #504C47; }
+    /* variable cards (RIR/tempo/volume) */
+    .var-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+    .var-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:18px 20px; }
+    .var-card .v-num { font-family:var(--fm); font-size:11px; color:var(--text-3); margin-bottom:6px; }
+    .var-card .v-title { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--text-1); margin-bottom:8px; }
+    .var-card .v-body { font-size:12px; color:var(--text-2); line-height:1.55; }
+    .ab-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .ab-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:20px 22px; border-top:3px solid var(--border); }
+    .ab-card.a { border-top-color:var(--text-3); }
+    .ab-card.b { border-top-color:var(--green); }
+    .ab-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .ab-badge { font-size:11px; font-weight:700; padding:3px 11px; border-radius:100px; }
+    .ab-card.a .ab-badge { background:var(--surface-2); color:var(--text-2); }
+    .ab-card.b .ab-badge { background:var(--green-lt); color:var(--green-dk); }
+    .ab-title { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--text-1); }
+    .ab-body { font-size:13px; color:var(--text-2); line-height:1.6; }
 
-    /* ── strength ── */
-    .str-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-    .str-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-md); padding: 22px;
-    }
-    .str-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .str-badge {
-      font-size: 11px; font-weight: 700; padding: 4px 12px;
-      border-radius: 100px; letter-spacing: .05em;
-    }
-    .str-badge.sa { background: #ECEAFE; color: #4A42C0; }
-    .str-badge.sb { background: #DDF8EF; color: #0B6046; }
-    .str-sub { font-size: 12px; color: var(--text-2); }
-    .ex-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .ex-list li {
-      font-size: 13px; color: var(--text-2); display: flex; gap: 8px; line-height: 1.4;
-    }
-    .ex-list li::before { content: '—'; color: var(--text-3); flex-shrink: 0; }
-    .phase-vol {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-md); overflow: hidden;
-    }
-    .pv-row {
-      display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.8fr;
-      border-bottom: 1px solid var(--border);
-    }
-    .pv-row:last-child { border-bottom: none; }
-    .pv-row.hdr { background: var(--surface-2); }
-    .pv-cell {
-      padding: 12px 16px; font-size: 13px; color: var(--text-2);
-      border-right: 1px solid var(--border);
-    }
-    .pv-cell:last-child { border-right: none; }
-    .pv-cell.h {
-      font-size: 10px; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; color: var(--text-3);
-    }
-    .pv-cell strong { display: block; color: var(--text-1); font-weight: 600; }
-    .pv-cell small { font-size: 11px; color: var(--amber); font-style: italic; }
+    /* generic data table */
+    .data-table { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); overflow:hidden; margin-bottom:20px; }
+    .dt-row { display:grid; border-bottom:1px solid var(--border); }
+    .dt-row:last-child { border-bottom:none; }
+    .dt-row.hdr { background:var(--surface-2); }
+    .dt-cell { padding:11px 14px; font-size:12px; color:var(--text-2); border-right:1px solid var(--border); line-height:1.45; }
+    .dt-cell:last-child { border-right:none; }
+    .dt-cell.h { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); }
+    .dt-cell strong { display:block; color:var(--text-1); font-weight:600; }
+    .phase-chip { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:4px; }
+    .pc-p1{background:var(--amber-lt);color:#6B3F09;} .pc-p2{background:var(--purple-lt);color:#4A1257;}
+    .pc-p3{background:var(--teal-lt);color:#063D2C;} .pc-p4{background:var(--gray-lt);color:#322F2B;}
 
-    /* ── routes ── */
-    .route-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-    .route-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-md); padding: 18px 20px;
-    }
-    .r-lvl {
-      font-size: 10px; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; padding: 2px 9px; border-radius: 100px;
-      display: inline-block; margin-bottom: 10px;
-    }
-    .lv0 { background: var(--green-lt); color: var(--green-dk); }
-    .lv1 { background: var(--blue-lt);  color: var(--blue); }
-    .lv2 { background: var(--amber-lt); color: var(--amber); }
-    .r-name {
-      font-family: var(--fd); font-size: 15px; font-weight: 700;
-      color: var(--text-1); margin-bottom: 8px; line-height: 1.3;
-    }
-    .r-stats { display: flex; gap: 12px; margin-bottom: 8px; }
-    .r-st { font-family: var(--fm); font-size: 11px; color: var(--text-3); }
-    .r-st strong { color: var(--text-1); }
-    .r-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
-    .r-access { font-size: 11px; color: var(--text-3); margin-top: 8px; font-style: italic; }
+    .exalloc-table .dt-row { grid-template-columns:1fr 1.6fr 1.6fr; }
+    .dosage-table .dt-row { grid-template-columns:1fr .7fr 1.1fr 1.3fr 1.1fr; }
+    .elev-overview-table .dt-row { grid-template-columns:.7fr 1.3fr 1fr 1fr; }
+    .elev-overview-table .dt-cell strong.peak { color:var(--red); }
+    .elev-note { font-size:11px; color:var(--text-3); margin:-8px 0 20px; }
 
-    /* ── pacing ── */
-    .pace-intro { font-size: 14px; color: var(--text-2); margin-bottom: 20px; max-width: 700px; line-height: 1.65; }
-    .pace-table {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-md); overflow: hidden;
-    }
-    .pc-row {
-      display: grid; grid-template-columns: 1.5fr .8fr 1.5fr 2fr;
-      border-bottom: 1px solid var(--border);
-    }
-    .pc-row:last-child { border-bottom: none; }
-    .pc-row.hdr { background: var(--surface-2); }
-    .pc-cell {
-      padding: 12px 16px; font-size: 13px; color: var(--text-1);
-      border-right: 1px solid var(--border); line-height: 1.4;
-    }
-    .pc-cell:last-child { border-right: none; }
-    .pc-cell.h {
-      font-size: 10px; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; color: var(--text-3);
-    }
-    .rpe {
-      font-family: var(--fm); font-size: 12px; font-weight: 700;
-      padding: 3px 9px; border-radius: 100px; display: inline-block;
-    }
-    .pc-row.race-row { background: #FDF8F0; }
+    /* plan section */
+    .plan-header { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:16px; }
+    .plan-header .sec-title { margin-bottom:0; }
+    .phase-tabs { display:flex; gap:6px; flex-wrap:wrap; }
+    .ptab { padding:6px 14px; border-radius:100px; border:1px solid var(--border); font-size:12px; font-weight:500; cursor:pointer; background:var(--surface); color:var(--text-2); transition:all .15s; font-family:var(--fb); }
+    .ptab:hover { background:var(--surface-2); }
+    .ptab.a-all { background:var(--text-1); color:#fff; border-color:var(--text-1); }
+    .ptab.a-p1 { background:var(--amber); color:#fff; border-color:var(--amber); }
+    .ptab.a-p2 { background:var(--purple); color:#fff; border-color:var(--purple); }
+    .ptab.a-p3 { background:var(--teal); color:#fff; border-color:var(--teal); }
+    .ptab.a-p4 { background:var(--gray); color:#fff; border-color:var(--gray); }
+    .wk-struct { display:flex; gap:6px; flex-wrap:wrap; align-items:center; padding:12px 16px; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); margin-bottom:16px; }
+    .ws-lbl { font-size:11px; color:var(--text-3); font-weight:500; margin-right:4px; }
+    .ws-d { font-size:11px; font-weight:600; padding:3px 10px; border-radius:100px; }
+    .ws-d.rest  { background:var(--surface-2); color:var(--text-2); }
+    .ws-d.easy  { background:var(--teal-lt);   color:var(--teal); }
+    .ws-d.key   { background:var(--blue-lt);   color:var(--blue); }
+    .ws-d.short { background:var(--green-lt);  color:var(--green-dk); }
+    .ws-d.long  { background:var(--amber-lt);  color:var(--amber); }
+    .week-list { display:flex; flex-direction:column; gap:10px; }
+    .wcard { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; border-left:4px solid var(--border); transition:box-shadow .15s; }
+    .wcard:hover { box-shadow:0 2px 16px rgba(0,0,0,.07); }
+    .wcard.ph-p1 { border-left-color:var(--amber); }
+    .wcard.ph-p2 { border-left-color:var(--purple); }
+    .wcard.ph-p3 { border-left-color:var(--teal); }
+    .wcard.ph-p4 { border-left-color:var(--gray); }
+    .wcard.ph-rec{ border-left-color:var(--text-3); }
+    .wcard.ph-race{ border-left-color:var(--race-red); }
+    .wcard.hidden { display:none; }
+    .wcard-head { display:flex; align-items:center; gap:10px; padding:10px 18px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .wcard-head::after { content:attr(data-wnum); position:absolute; right:80px; top:50%; transform:translateY(-50%); font-family:var(--fm); font-size:52px; font-weight:700; color:var(--border); opacity:.6; pointer-events:none; letter-spacing:-.04em; line-height:1; }
+    .w-num { font-family:var(--fm); font-size:11px; font-weight:700; color:var(--text-3); letter-spacing:.04em; flex-shrink:0; }
+    .w-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:100px; letter-spacing:.04em; flex-shrink:0; }
+    .ph-p1  .w-badge { background:var(--amber-lt); color:#6B3F09; }
+    .ph-p2  .w-badge { background:var(--purple-lt);color:#4A1257; }
+    .ph-p3  .w-badge { background:var(--teal-lt);  color:#063D2C; }
+    .ph-p4  .w-badge { background:var(--gray-lt);  color:#322F2B; }
+    .ph-rec .w-badge { background:var(--surface-2);color:var(--text-2); }
+    .ph-race .w-badge{ background:var(--race-lt);  color:var(--race-red); }
+    .w-focus { flex:1; font-size:11px; color:var(--text-2); font-style:italic; min-width:0; }
+    .w-km { font-family:var(--fm); font-size:14px; font-weight:700; color:var(--text-1); flex-shrink:0; z-index:1; }
+    .w-prog { height:2px; background:var(--border); position:absolute; bottom:0; left:0; right:0; }
+    .w-prog-fill { height:100%; }
+    .ph-p1  .w-prog-fill { background:var(--amber); }
+    .ph-p2  .w-prog-fill { background:var(--purple); }
+    .ph-p3  .w-prog-fill { background:var(--teal); }
+    .ph-p4  .w-prog-fill { background:var(--gray); }
+    .ph-rec .w-prog-fill { background:var(--text-3); }
+    .ph-race .w-prog-fill{ background:var(--race-red); }
+    .wcard-body { padding:10px 18px 14px; }
+    .day-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+    .day { border-radius:var(--r-sm); padding:6px 6px 7px; min-height:88px; display:flex; flex-direction:column; }
+    .d-name { font-family:var(--fm); font-size:8px; font-weight:700; letter-spacing:.08em; margin-bottom:4px; }
+    .d-act  { font-size:10px; line-height:1.3; font-weight:500; flex:1; }
+    .d-venue{ font-size:9px; font-weight:500; margin-top:3px; opacity:.85; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .d-stats{ font-family:var(--fm); font-size:9px; margin-top:2px; }
+    .d-str  { font-size:8px; font-weight:700; padding:1px 5px; border-radius:3px; margin-top:3px; align-self:flex-start; letter-spacing:.03em; }
+    .dt-rest  { background:#ECEAE4; }
+    .dt-rest  .d-name,.dt-rest  .d-act,.dt-rest .d-venue { color:#928E88; }
+    .dt-easy  { background:#E8F3DA; }
+    .dt-easy  .d-name{color:#3B6D11;} .dt-easy .d-act,.dt-easy .d-venue{color:#1E4007;} .dt-easy .d-stats{color:#3B6D11;}
+    .dt-tempo { background:#E3EFFC; }
+    .dt-tempo .d-name{color:#185FA5;} .dt-tempo .d-act,.dt-tempo .d-venue{color:#0A3D78;} .dt-tempo .d-stats{color:#185FA5;}
+    .dt-long  { background:#FDF1E1; }
+    .dt-long  .d-name{color:#B5720A;} .dt-long .d-act,.dt-long .d-venue{color:#6B3F09;} .dt-long .d-stats{color:#B5720A;}
+    .dt-hill  { background:#FCEAF3; }
+    .dt-hill  .d-name{color:#8C2E5B;} .dt-hill .d-act,.dt-hill .d-venue{color:#6D1F45;} .dt-hill .d-stats{color:#8C2E5B;}
+    .dt-race  { background:#FDDBDF; }
+    .dt-race  .d-name{color:#C0213B;} .dt-race .d-act,.dt-race .d-venue{color:#7A1225;} .dt-race .d-stats{color:#C0213B;}
+    /* strength tag colours by phase, text by role (維持/主要) */
+    .str-p1 { background:#FDE8D0; color:#7C3B0A; }
+    .str-p2 { background:#F0E5FC; color:#6B1F7A; }
+    .str-p3 { background:#DDF8EF; color:#0B6046; }
+    .str-p4 { background:#ECEAE4; color:#504C47; }
 
-    /* ── footer ── */
-    footer {
-      border-top: 1px solid var(--border); padding: 28px 20px;
-      text-align: center; font-size: 12px; color: var(--text-3);
-      max-width: 1160px; margin: 0 auto;
-    }
+    .route-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .route-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:18px 20px; }
+    .r-lvl { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:100px; display:inline-block; margin-bottom:10px; }
+    .lv0 { background:var(--green-lt); color:var(--green-dk); }
+    .lv1 { background:var(--blue-lt);  color:var(--blue); }
+    .lv2 { background:var(--amber-lt); color:var(--amber); }
+    .r-name { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--text-1); margin-bottom:8px; line-height:1.3; }
+    .r-stats { display:flex; gap:12px; margin-bottom:8px; }
+    .r-st { font-family:var(--fm); font-size:11px; color:var(--text-3); }
+    .r-st strong { color:var(--text-1); }
+    .r-desc { font-size:12px; color:var(--text-2); line-height:1.55; }
+    .r-access { font-size:11px; color:var(--text-3); margin-top:8px; font-style:italic; }
 
-    /* ── responsive ── */
-    @media (max-width: 860px) {
-      .nav-links .hide-m { display: none; }
-      #hero { padding: 40px 16px 0; }
-      .page { padding: 0 16px; }
-      .metrics { grid-template-columns: repeat(2,1fr); }
-      .str-grid { grid-template-columns: 1fr; }
-      .route-grid { grid-template-columns: 1fr 1fr; }
-      .pv-row { grid-template-columns: 1fr 1fr; }
-      .pv-cell:nth-child(3),.pv-cell:nth-child(4) { border-top: 1px solid var(--border); }
+    .pace-intro { font-size:14px; color:var(--text-2); margin-bottom:20px; max-width:700px; line-height:1.65; }
+    .pace-table { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); overflow:hidden; }
+    .pc-row { display:grid; grid-template-columns:1.5fr .8fr 1.5fr 2fr; border-bottom:1px solid var(--border); }
+    .pc-row:last-child { border-bottom:none; }
+    .pc-row.hdr { background:var(--surface-2); }
+    .pc-cell { padding:12px 16px; font-size:13px; color:var(--text-1); border-right:1px solid var(--border); line-height:1.4; }
+    .pc-cell:last-child { border-right:none; }
+    .pc-cell.h { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--text-3); }
+    .rpe { font-family:var(--fm); font-size:12px; font-weight:700; padding:3px 9px; border-radius:100px; display:inline-block; }
+    .pc-row.race-row { background:#FDF8F0; }
+
+    .safety-list { display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
+    .safety-item { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-sm); padding:12px 16px; display:flex; gap:12px; align-items:flex-start; font-size:13px; color:var(--text-2); line-height:1.55; }
+    .safety-num { font-family:var(--fm); font-size:12px; font-weight:700; color:var(--text-3); flex-shrink:0; }
+
+    .ref-list { display:flex; flex-direction:column; gap:8px; }
+    .ref-item { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-sm); padding:14px 18px; display:flex; gap:14px; align-items:flex-start; }
+    .ref-num { font-family:var(--fm); font-size:12px; font-weight:700; color:var(--text-3); flex-shrink:0; width:22px; padding-top:1px; }
+    .ref-body { flex:1; }
+    .ref-title { font-size:13px; font-weight:600; color:var(--text-1); margin-bottom:3px; line-height:1.4; }
+    .ref-meta  { font-size:12px; color:var(--text-3); line-height:1.5; }
+    .ref-link  { font-size:11px; color:var(--green); margin-top:4px; display:inline-block; }
+
+    footer { border-top:1px solid var(--border); padding:28px 20px; text-align:center; font-size:12px; color:var(--text-3); max-width:1160px; margin:0 auto; }
+
+    @media (max-width:860px) {
+      .nav-links .hide-m { display:none; }
+      #hero { padding:40px 16px 0; }
+      .page { padding:0 16px; }
+      .metrics { grid-template-columns:repeat(2,1fr); }
+      .intro-grid { grid-template-columns:1fr; }
+      .phase-overview { grid-template-columns:repeat(2,1fr); }
+      .var-grid { grid-template-columns:1fr; }
+      .ab-grid { grid-template-columns:1fr; }
+      .route-grid { grid-template-columns:1fr 1fr; }
+      .exalloc-table .dt-row,.dosage-table .dt-row { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width: 560px) {
-      .route-grid { grid-template-columns: 1fr; }
-      .day-grid { overflow-x: auto; grid-template-columns: repeat(7, minmax(86px,1fr)); }
-      .wcard-body { overflow: hidden; }
-      .pc-row { grid-template-columns: 1fr 1fr; }
-      .pc-cell:nth-child(3),.pc-cell:nth-child(4) {
-        border-top: 1px solid var(--border);
-      }
-      .plan-header { flex-direction: column; }
+    @media (max-width:560px) {
+      .route-grid { grid-template-columns:1fr; }
+      .day-grid { overflow-x:auto; grid-template-columns:repeat(7,minmax(86px,1fr)); }
+      .wcard-body { overflow:hidden; }
+      .pc-row { grid-template-columns:1fr 1fr; }
+      .plan-header { flex-direction:column; }
+      .phase-overview { grid-template-columns:1fr 1fr; }
     }
   </style>
 </head>
@@ -406,14 +256,15 @@
 <nav>
   <span class="nav-brand">嶺線計畫 · 30K</span>
   <ul class="nav-links">
+    <li><a href="#intro">核心邏輯</a></li>
     <li><a href="#plan">課表</a></li>
-    <li><a href="#strength">肌力</a></li>
+    <li class="hide-m"><a href="#strength">肌力</a></li>
     <li class="hide-m"><a href="#routes">路線</a></li>
     <li class="hide-m"><a href="#pacing">配速</a></li>
+    <li class="hide-m"><a href="#refs">來源</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-eye">TRAIL RUNNING PLAN · 14 WEEKS</div>
   <h1 class="hero-title">嶺線計畫<br><span class="accent">RIDGELINE 30K</span></h1>
@@ -421,8 +272,6 @@
     <span class="htag hi">越野跑 30K</span>
     <span class="htag">↑ 1,500–2,000 m</span>
     <span class="htag">14 週備賽</span>
-    <span class="htag">週一二三・五六訓練</span>
-    <span class="htag">週四日全休</span>
   </div>
   <div class="elev-card">
     <div class="elev-top">
@@ -438,18 +287,14 @@
           <stop offset="100%" stop-color="#5A9626" stop-opacity=".03"/>
         </linearGradient>
       </defs>
-      <path d="M0,162 C20,148 40,110 75,78 C105,52 130,40 175,34 C205,30 228,58 248,68 C268,78 285,50 315,36 C345,22 375,16 415,12 C450,9 475,20 505,16 C535,12 558,24 590,50 C618,74 640,94 672,110 C702,126 732,136 768,146 C800,154 835,160 875,163 C910,166 950,167 1000,168 L1000,180 L0,180 Z"
-            fill="url(#eg)"/>
-      <path d="M0,162 C20,148 40,110 75,78 C105,52 130,40 175,34 C205,30 228,58 248,68 C268,78 285,50 315,36 C345,22 375,16 415,12 C450,9 475,20 505,16 C535,12 558,24 590,50 C618,74 640,94 672,110 C702,126 732,136 768,146 C800,154 835,160 875,163 C910,166 950,167 1000,168"
-            fill="none" stroke="#5A9626" stroke-width="2.5" stroke-linejoin="round"/>
-      <!-- generic waypoint markers -->
+      <path d="M0,162 C20,148 40,110 75,78 C105,52 130,40 175,34 C205,30 228,58 248,68 C268,78 285,50 315,36 C345,22 375,16 415,12 C450,9 475,20 505,16 C535,12 558,24 590,50 C618,74 640,94 672,110 C702,126 732,136 768,146 C800,154 835,160 875,163 C910,166 950,167 1000,168 L1000,180 L0,180 Z" fill="url(#eg)"/>
+      <path d="M0,162 C20,148 40,110 75,78 C105,52 130,40 175,34 C205,30 228,58 248,68 C268,78 285,50 315,36 C345,22 375,16 415,12 C450,9 475,20 505,16 C535,12 558,24 590,50 C618,74 640,94 672,110 C702,126 732,136 768,146 C800,154 835,160 875,163 C910,166 950,167 1000,168" fill="none" stroke="#5A9626" stroke-width="2.5" stroke-linejoin="round"/>
       <circle cx="175" cy="34" r="3.5" fill="#B5720A"/>
       <circle cx="415" cy="12" r="4"   fill="#B5720A"/>
       <circle cx="672" cy="110" r="3.5" fill="#B5720A"/>
       <text x="175" y="24"  font-family="monospace" font-size="9.5" fill="#B5720A" text-anchor="middle">前段高點</text>
       <text x="415" y="5"   font-family="monospace" font-size="9.5" fill="#B5720A" text-anchor="middle">全程最高</text>
       <text x="672" y="100" font-family="monospace" font-size="9.5" fill="#B5720A" text-anchor="middle">後段緩降</text>
-      <!-- km ticks -->
       <text x="2"   y="178" font-family="monospace" font-size="9" fill="#928E88">0</text>
       <text x="166" y="178" font-family="monospace" font-size="9" fill="#928E88" text-anchor="middle">5k</text>
       <text x="332" y="178" font-family="monospace" font-size="9" fill="#928E88" text-anchor="middle">10k</text>
@@ -463,31 +308,63 @@
 
 <div class="page">
 
-  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric">
-      <div class="m-lbl">訓練週數</div>
-      <div class="m-val">14</div>
-      <div class="m-sub">週</div>
-    </div>
-    <div class="metric">
-      <div class="m-lbl">峰值週量</div>
-      <div class="m-val">60</div>
-      <div class="m-sub">km / 週 · 第 11 週</div>
-    </div>
-    <div class="metric">
-      <div class="m-lbl">最長長跑</div>
-      <div class="m-val">26km</div>
-      <div class="m-sub">↑1,600m · 第 11 週</div>
-    </div>
-    <div class="metric">
-      <div class="m-lbl">每週固定</div>
-      <div class="m-val">5+2</div>
-      <div class="m-sub">5 跑步天 + 2 次肌力</div>
-    </div>
+    <div class="metric"><div class="m-lbl">訓練週數</div><div class="m-val">14</div><div class="m-sub">週</div></div>
+    <div class="metric"><div class="m-lbl">峰值週量</div><div class="m-val">60</div><div class="m-sub">km / 週 · 第 11 週</div></div>
+    <div class="metric"><div class="m-lbl">最長長跑</div><div class="m-val">26km</div><div class="m-sub">↑1,600m · 第 11 週</div></div>
+    <div class="metric"><div class="m-lbl">每週固定</div><div class="m-val">5+2</div><div class="m-sub">5 跑步天 + 2 次肌力</div></div>
   </div>
 
-  <!-- TRAINING PLAN -->
+  <!-- INTRO -->
+  <section id="intro" class="section">
+    <div class="sec-eye">PLAN DESIGN</div>
+    <h2 class="sec-title">核心邏輯</h2>
+    <div class="intro-grid">
+      <div class="intro-card">
+        <div class="intro-card-eye">原則一</div>
+        <div class="intro-card-title">從一般到專項</div>
+        <div class="intro-card-body">
+          跑步與肌力的刺激方向同步從「一般」轉向「越野專項」。第一期在公路環境建立可量化的有氧基底；第二期引入坡道刺激 VO₂max；第三期完全進入越野地形，讓前兩期的體能轉化成比賽能力。<br><br>
+          每一期只集中一個刺激方向，因為<strong>身體無法同時對多種截然不同的訓練刺激產生最佳適應</strong>，在一個窗口期內聚焦，效果遠好於分散。
+        </div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-eye">原則二</div>
+        <div class="intro-card-title">肌力 A／B 不是強度高低，是角色分工</div>
+        <div class="intro-card-body">
+          DOMS／恢復時間由三個變數共同決定：<strong>離力竭距離（RIR）、離心節奏（Tempo）、訓練容積（組數）</strong>。肌力 A（週一）三者同時收斂，確保不影響隔天關鍵課表；肌力 B（週四）依週期目標決定強度與容積，並承擔所有刻意放慢的離心動作——因為這天的恢復緩衝最大。
+          <div class="stat-hl">
+            <div class="sh-item"><div class="sh-val">r = 0.91</div><div class="sh-lbl">肌耐力 × 越野成績</div></div>
+            <div class="sh-item"><div class="sh-val">r = 0.76</div><div class="sh-lbl">VO₂max × 越野成績</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      <div class="po-col c1">
+        <div class="po-lbl">第一期 基礎 W1–3</div>
+        <div class="po-run">跑：公路 LT2 節奏跑</div>
+        <div class="po-str">肌力：最大肌力</div>
+      </div>
+      <div class="po-col c2">
+        <div class="po-lbl">第二期 進展 W5–7</div>
+        <div class="po-run">跑：坡道 VO₂max 間歇</div>
+        <div class="po-str">肌力：爆發力 / 功能性</div>
+      </div>
+      <div class="po-col c3">
+        <div class="po-lbl">第三期 強化 W9–11</div>
+        <div class="po-run">跑：越野 LT2 節奏</div>
+        <div class="po-str">肌力：肌耐力</div>
+      </div>
+      <div class="po-col c4">
+        <div class="po-lbl">第四期 減量 W12–14</div>
+        <div class="po-run">跑：各刺激維持感覺</div>
+        <div class="po-str">肌力：活化</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
   <section id="plan" class="section">
     <div class="sec-eye">TRAINING SCHEDULE</div>
     <div class="plan-header">
@@ -502,14 +379,40 @@
     </div>
     <div class="wk-struct">
       <span class="ws-lbl">每週固定結構</span>
-      <span class="ws-d easy">一 輕鬆 + 肌力A</span>
+      <span class="ws-d easy">一 輕鬆 + 肌力A（維持）</span>
       <span class="ws-d key">二 關鍵課表</span>
-      <span class="ws-d easy">三 輕鬆 + 肌力B</span>
-      <span class="ws-d rest">四 全休</span>
-      <span class="ws-d short">五 短輕鬆</span>
+      <span class="ws-d rest">三 全休</span>
+      <span class="ws-d easy">四 輕鬆 + 肌力B（主要）</span>
+      <span class="ws-d short">五 輕鬆 / 交叉訓練</span>
       <span class="ws-d long">六 長跑</span>
       <span class="ws-d rest">日 全休</span>
     </div>
+
+    <div class="sub-title">週爬升總覽（里程 + D+）</div>
+    <div class="data-table elev-overview-table">
+      <div class="dt-row hdr">
+        <div class="dt-cell h">週</div>
+        <div class="dt-cell h">週期</div>
+        <div class="dt-cell h">週總里程</div>
+        <div class="dt-cell h">週總爬升 D+</div>
+      </div>
+      <div class="dt-row"><div class="dt-cell">W1</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">32km</div><div class="dt-cell">400m</div></div>
+      <div class="dt-row"><div class="dt-cell">W2</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">36km</div><div class="dt-cell">600m</div></div>
+      <div class="dt-row"><div class="dt-cell">W3</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">40km</div><div class="dt-cell">750m</div></div>
+      <div class="dt-row"><div class="dt-cell">W4</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">25km</div><div class="dt-cell">~280m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W5</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">44km</div><div class="dt-cell"><strong>2,052m</strong></div></div>
+      <div class="dt-row"><div class="dt-cell">W6</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">48km</div><div class="dt-cell">1,700m</div></div>
+      <div class="dt-row"><div class="dt-cell">W7</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">52km</div><div class="dt-cell">1,900m</div></div>
+      <div class="dt-row"><div class="dt-cell">W8</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">28km</div><div class="dt-cell">~280m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W9</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">54km</div><div class="dt-cell">2,060m</div></div>
+      <div class="dt-row"><div class="dt-cell">W10</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">58km</div><div class="dt-cell"><strong class="peak">2,740m（全期最高）</strong></div></div>
+      <div class="dt-row"><div class="dt-cell">W11</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">60km</div><div class="dt-cell">1,600m</div></div>
+      <div class="dt-row"><div class="dt-cell">W12</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">42km</div><div class="dt-cell">932m</div></div>
+      <div class="dt-row"><div class="dt-cell">W13</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">26km</div><div class="dt-cell">~200m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W14</div><div class="dt-cell"><span class="phase-chip pc-p4">比賽週</span></div><div class="dt-cell">40km</div><div class="dt-cell">1,500m+（比賽）</div></div>
+    </div>
+    <p class="elev-note">* W4／W8／W13 原始課表未標記爬升，依路線典型值（陽明山二子坪／仙跡岩輕鬆段）估算，建議以實際 GPS 記錄校正。</p>
+
     <div class="week-list" id="weekList"></div>
   </section>
 
@@ -517,65 +420,139 @@
   <section id="strength" class="section">
     <div class="sec-eye">STRENGTH TRAINING</div>
     <h2 class="sec-title">肌力訓練</h2>
-    <div class="str-grid">
-      <div class="str-card">
-        <div class="str-head">
-          <span class="str-badge sa">SESSION A</span>
-          <span class="str-sub">後鏈 + 核心 · 週一輕鬆跑後 ~40 分鐘</span>
-        </div>
-        <ul class="ex-list">
-          <li>臀橋 / Hip Thrust（進階→單腿版本）</li>
-          <li>羅馬尼亞硬舉（進階→單腿 RDL）</li>
-          <li>單腳小腿提踵（台階離心，每趟3秒下降）</li>
-          <li>平板支撐進階變體（動態 / 移動式 Plank）</li>
-          <li>Bird Dog（核心深層穩定）</li>
-        </ul>
+
+    <div class="var-grid">
+      <div class="var-card">
+        <div class="v-num">01</div>
+        <div class="v-title">離力竭距離（RIR）</div>
+        <div class="v-body">越接近力竭，神經系統恢復需求越長，是「系統性疲勞」的主要驅動因素，比單純做了幾組更關鍵。</div>
       </div>
-      <div class="str-card">
-        <div class="str-head">
-          <span class="str-badge sb">SESSION B</span>
-          <span class="str-sub">單腳穩定 + 臀髖 · 週三輕鬆跑後 ~40 分鐘</span>
-        </div>
-        <ul class="ex-list">
-          <li>保加利亞分腿蹲 Bulgarian Split Squat</li>
-          <li>側向踏步上台 + 膝蓋上提（Step-up）</li>
-          <li>側臥蚌殼式 + 彈力帶（Clamshell）</li>
-          <li>Nordic Curl（腿後腱離心 → 保護下坡）</li>
-          <li>側平板 / Copenhagen Plank（內收肌穩定）</li>
-        </ul>
+      <div class="var-card">
+        <div class="v-num">02</div>
+        <div class="v-title">離心節奏（Tempo）</div>
+        <div class="v-body">刻意放慢的離心收縮（如 2–3 秒下降）比正常節奏製造更多肌肉微損傷與痠痛，是常被忽略的變數。</div>
+      </div>
+      <div class="var-card">
+        <div class="v-num">03</div>
+        <div class="v-title">訓練容積（組數）</div>
+        <div class="v-body">主要影響局部肌肉的代謝疲勞，恢復速度比前兩者快，是三個變數裡相對次要的一個。</div>
       </div>
     </div>
-    <div class="phase-vol">
-      <div class="pv-row hdr">
-        <div class="pv-cell h">週期</div>
-        <div class="pv-cell h">訓練量</div>
-        <div class="pv-cell h">強度</div>
-        <div class="pv-cell h">重點</div>
+
+    <div class="ab-grid">
+      <div class="ab-card a">
+        <div class="ab-head"><span class="ab-badge">SESSION A · 週一</span><span class="ab-title">維持劑量</span></div>
+        <div class="ab-body">三個變數同時收斂：RIR 高（離力竭遠）、離心節奏正常、容積偏低。功能是不干擾隔天關鍵課表。動作維持貫穿全程的基礎模式，不隨週期更換。</div>
       </div>
-      <div class="pv-row">
-        <div class="pv-cell"><strong>第一期 1–4 週</strong>基礎期</div>
-        <div class="pv-cell">2 組 × 12 下</div>
-        <div class="pv-cell">輕重量 / 徒手</div>
-        <div class="pv-cell">動作控制，啟動正確肌群</div>
+      <div class="ab-card b">
+        <div class="ab-head"><span class="ab-badge">SESSION B · 週四</span><span class="ab-title">主要劑量</span></div>
+        <div class="ab-body">依當期週期化目標決定強度、容積與動作選擇，承擔所有刻意放慢離心節奏的動作。距關鍵課表、長跑都有 2 天緩衝，是全週恢復空間最大的位置。</div>
       </div>
-      <div class="pv-row">
-        <div class="pv-cell"><strong>第二期 5–8 週</strong>進展期</div>
-        <div class="pv-cell">3 組 × 12 下</div>
-        <div class="pv-cell">適度加重</div>
-        <div class="pv-cell">增加肌力，單腿動作為主</div>
+    </div>
+
+    <div class="sub-title">動作分配（依週期演進）</div>
+    <div class="data-table exalloc-table">
+      <div class="dt-row hdr">
+        <div class="dt-cell h">週期</div>
+        <div class="dt-cell h">Session A（週一・維持）</div>
+        <div class="dt-cell h">Session B（週四・主要）</div>
       </div>
-      <div class="pv-row">
-        <div class="pv-cell"><strong>第三期 9–11 週</strong>強化期</div>
-        <div class="pv-cell">3 組 × 15 下<br><small>第 11 週降回 2×12</small></div>
-        <div class="pv-cell">維持重量</div>
-        <div class="pv-cell">維持品質，不引入新動作</div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p1">第一期 最大肌力</span></div>
+        <div class="dt-cell">深蹲、臀橋、站姿提踵、平板 / Bird Dog</div>
+        <div class="dt-cell">保加利亞分腿蹲、RDL（離心 2–3 秒）、Nordic Curl、側平板</div>
       </div>
-      <div class="pv-row">
-        <div class="pv-cell"><strong>第四期 12–14 週</strong>減量期</div>
-        <div class="pv-cell">2 組 × 10 下<br><small>第 14 週取消</small></div>
-        <div class="pv-cell">輕量</div>
-        <div class="pv-cell">維持神經肌肉感覺，不製造新疲勞</div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p2">第二期 爆發力</span></div>
+        <div class="dt-cell">深蹲（維持基礎，不變）、臀橋、平板</div>
+        <div class="dt-cell">跳箱 / 深蹲跳、側向跳躍、分腿蹲（向心求快）、Nordic Curl</div>
       </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p3">第三期 肌耐力</span></div>
+        <div class="dt-cell">深蹲、臀橋、提踵、平板（高反覆）</div>
+        <div class="dt-cell">分腿蹲、RDL、Nordic Curl、Box Step-down 離心踏步、側平板</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p4">第四期 活化</span></div>
+        <div class="dt-cell">深蹲（徒手）、臀橋（徒手）、平板</div>
+        <div class="dt-cell">分腿蹲（徒手）、RDL（輕量）、側平板</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:28px;">第二期是唯一真正更換動作模式的週期，加入跳箱、深蹲跳、側向跳躍這類反應性動作。Nordic Curl 在多數週期保留，因為離心腿後腱保護對下坡跑全程都重要。</p>
+
+    <div class="sub-title">肌力劑量表（三變數版）</div>
+    <div class="data-table dosage-table">
+      <div class="dt-row hdr">
+        <div class="dt-cell h">週期</div>
+        <div class="dt-cell h">角色</div>
+        <div class="dt-cell h">強度 / RIR</div>
+        <div class="dt-cell h">離心節奏</div>
+        <div class="dt-cell h">容積</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p1">第一期</span>最大肌力</div>
+        <div class="dt-cell">A 維持</div>
+        <div class="dt-cell">70–75% 1RM，RIR 3–4</div>
+        <div class="dt-cell">正常（1–2 秒）</div>
+        <div class="dt-cell">2–3 組 × 5–6 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"></div>
+        <div class="dt-cell">B 主要</div>
+        <div class="dt-cell">80–85% 1RM，RIR 1–2</div>
+        <div class="dt-cell">控制（2–3 秒）</div>
+        <div class="dt-cell">4 組 × 4–6 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p2">第二期</span>爆發力</div>
+        <div class="dt-cell">A 維持</div>
+        <div class="dt-cell">50–55% 1RM，RIR 4+</div>
+        <div class="dt-cell">正常</div>
+        <div class="dt-cell">2 組 × 8 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"></div>
+        <div class="dt-cell">B 主要</div>
+        <div class="dt-cell">60–65% 1RM，RIR 3<br><small style="color:var(--text-3)">爆發力訓練本身不應到力竭</small></div>
+        <div class="dt-cell">正常（向心求快）</div>
+        <div class="dt-cell">3 組 × 6–8 下 + 跳躍/落地控制</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p3">第三期</span>肌耐力</div>
+        <div class="dt-cell">A 維持</div>
+        <div class="dt-cell">25–30% 1RM，RIR 4+</div>
+        <div class="dt-cell">正常</div>
+        <div class="dt-cell">2 組 × 12–15 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"></div>
+        <div class="dt-cell">B 主要</div>
+        <div class="dt-cell">30–40% 1RM，RIR 2–3</div>
+        <div class="dt-cell">控制（2–3 秒，Box Step-down）</div>
+        <div class="dt-cell">3 組 × 15–20 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"><span class="phase-chip pc-p4">第四期</span>活化</div>
+        <div class="dt-cell">A 維持</div>
+        <div class="dt-cell">極輕，RIR 5+</div>
+        <div class="dt-cell">正常</div>
+        <div class="dt-cell">1 組 × 10 下</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell"></div>
+        <div class="dt-cell">B 主要</div>
+        <div class="dt-cell">輕量，RIR 4+</div>
+        <div class="dt-cell">正常</div>
+        <div class="dt-cell">1–2 組 × 10 下</div>
+      </div>
+    </div>
+
+    <div class="sub-title">安全閥</div>
+    <div class="safety-list">
+      <div class="safety-item"><span class="safety-num">01</span>若週六長跑當天 DOMS 仍未消退，當週長跑可挪至週日，週六轉為額外緩衝</div>
+      <div class="safety-item"><span class="safety-num">02</span>肌力 B 嚴格控管劑量，完成後應感覺「練過」而非「練爆」</div>
+      <div class="safety-item"><span class="safety-num">03</span>建議記錄每次肌力 B 後的隔日腿部狀態（1–5 分），用數據校正劑量上限；第一期若 DOMS 超過 2 天，優先下修 RIR，其次才調整容積</div>
+      <div class="safety-item"><span class="safety-num">04</span>交叉訓練（週五選項）僅限游泳或輕度飛輪，嚴格控制在 Zone 2、60 分鐘以內</div>
     </div>
   </section>
 
@@ -587,62 +564,44 @@
       <div class="route-card">
         <span class="r-lvl lv0">新手入門</span>
         <div class="r-name">軍艦岩－丹鳳山 O 形</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>5–6km</strong></span>
-          <span class="r-st"><strong>↑270m</strong></span>
-        </div>
+        <div class="r-stats"><span class="r-st"><strong>5–6km</strong></span><span class="r-st"><strong>↑270m</strong></span></div>
         <p class="r-desc">砂岩裸岩稜線視野遼闊，O 形繞圈不走回頭路。前段校園石階接林蔭土徑，越野跑起步的最佳選擇。</p>
         <p class="r-access">MRT 唭哩岸 / 石牌站步行可達</p>
       </div>
       <div class="route-card">
         <span class="r-lvl lv0">新手入門</span>
         <div class="r-name">劍潭山親山步道</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>往返 6km</strong></span>
-          <span class="r-st"><strong>↑150–200m</strong></span>
-        </div>
-        <p class="r-desc">遮蔭率高、路面平整，抵老地方觀機平台可俯瞰松山機場。適合練習越野跑的呼吸節奏與配速感。</p>
+        <div class="r-stats"><span class="r-st"><strong>往返 6km</strong></span><span class="r-st"><strong>↑150–200m</strong></span></div>
+        <p class="r-desc">遮蔭率高、路面平整，可抵老地方觀機平台俯瞰松山機場。適合練習越野跑的呼吸節奏與配速感。</p>
         <p class="r-access">MRT 劍潭站出站即達</p>
       </div>
       <div class="route-card">
         <span class="r-lvl lv1">進階挑戰</span>
         <div class="r-name">士林－內湖稜線<br>劍潭山連走金面山</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>10–24km</strong></span>
-          <span class="r-st"><strong>可自訂</strong></span>
-        </div>
-        <p class="r-desc">串聯劍潭山、文間山、大崙尾山至金面山巨石攀爬段，士林越野賽事精華訓練路段。</p>
+        <div class="r-stats"><span class="r-st"><strong>10–24km</strong></span><span class="r-st"><strong>可自訂</strong></span></div>
+        <p class="r-desc">串聯劍潭山、文間山、大崙尾山至金面山巨石攀爬段，士林越野賽事精華訓練路段，地形多變。</p>
         <p class="r-access">起：MRT 劍潭站 → 終：MRT 西湖站</p>
       </div>
       <div class="route-card">
         <span class="r-lvl lv1">進階挑戰</span>
         <div class="r-name">台北大縱走第五段<br>劍潭山至碧山巖</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>約 12km</strong></span>
-          <span class="r-st"><strong>古道地形</strong></span>
-        </div>
+        <div class="r-stats"><span class="r-st"><strong>約 12km</strong></span><span class="r-st"><strong>古道地形</strong></span></div>
         <p class="r-desc">古道、林徑與人文歷史交織，綜合肌力與心肺的全面考驗。課表中週間備用長跑路線。</p>
         <p class="r-access">碧山巖可搭小 19、小 20 公車</p>
       </div>
       <div class="route-card">
         <span class="r-lvl lv2">高強度</span>
         <div class="r-name">陽明山東西大縱走<br>風櫃口至二子坪</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>全程 23–24km</strong></span>
-          <span class="r-st"><strong>↑1,500m+</strong></span>
-        </div>
+        <div class="r-stats"><span class="r-st"><strong>全程 23–24km</strong></span><span class="r-st"><strong>↑1,500m+</strong></span></div>
         <p class="r-desc">擎天崗草原、石梯嶺與多座火山錐，爬升強度高且地形多變，最接近越野 30K 比賽規格，第 5–11 週長跑首選。</p>
         <p class="r-access">公車至風櫃口（小 15 路）</p>
       </div>
       <div class="route-card">
         <span class="r-lvl lv2">高強度</span>
-        <div class="r-name">坪頂古圳<br>雙溪溝古道</div>
-        <div class="r-stats">
-          <span class="r-st"><strong>約 10km</strong></span>
-          <span class="r-st"><strong>溪谷 · 全蔭</strong></span>
-        </div>
-        <p class="r-desc">隱身溪谷全程林蔭，9 月悶熱訓練的護心率避暑首選，可銜接大縱走延伸至 15–18km。</p>
-        <p class="r-access">MRT 劍潭站搭公車至小坪頂</p>
+        <div class="r-name">三進七星山<br>苗圃／冷水坑／小油坑</div>
+        <div class="r-stats"><span class="r-st"><strong>全程約 11km</strong></span><span class="r-st"><strong>↑1,300m</strong></span></div>
+        <p class="r-desc">從三個登山口各登頂七星主峰一次，苗圃段兩公里多就有 500m+ 爬升，是全路線最吃肌耐力的段落，火山地形、箭竹林與大景視野不斷變換，是練習短時間高爬升密度的絕佳場地。</p>
+        <p class="r-access">苗圃登山口：陽明山公車總站轉乘 108 遊園公車</p>
       </div>
     </div>
   </section>
@@ -651,9 +610,7 @@
   <section id="pacing" class="section">
     <div class="sec-eye">PACING GUIDE</div>
     <h2 class="sec-title">配速指南</h2>
-    <p class="pace-intro">
-      越野跑不看每公里配速，看<strong>自覺努力程度（RPE）</strong>或心率。爬升多的 30K 賽事通常在陡坡段必須切換成<strong>健行步伐（Power Hike）</strong>——保住心率才能跑好後半段。
-    </p>
+    <p class="pace-intro">越野跑不看每公里配速，看<strong>自覺努力程度（RPE）</strong>或心率。爬升多的 30K 賽事通常在陡坡段必須切換成<strong>健行步伐（Power Hike）</strong>——保住心率才能跑好後半段。</p>
     <div class="pace-table">
       <div class="pc-row hdr">
         <div class="pc-cell h">訓練類型</div>
@@ -668,13 +625,13 @@
         <div class="pc-cell">可以完整說一句話，邊跑邊聊天</div>
       </div>
       <div class="pc-row">
-        <div class="pc-cell"><strong>節奏跑</strong></div>
+        <div class="pc-cell"><strong>節奏跑（LT2）</strong></div>
         <div class="pc-cell"><span class="rpe" style="background:#E3EFFC;color:#0A3D78">6–7</span></div>
         <div class="pc-cell">Z3 · 80–87%</div>
         <div class="pc-cell">說話只能說短句，感覺「舒服地難」</div>
       </div>
       <div class="pc-row">
-        <div class="pc-cell"><strong>間歇 / 爬坡重複</strong></div>
+        <div class="pc-cell"><strong>間歇 / 爬坡重複（VO₂max）</strong></div>
         <div class="pc-cell"><span class="rpe" style="background:#FDF1E1;color:#6B3F09">8–9</span></div>
         <div class="pc-cell">Z4–Z5 · 88–95%</div>
         <div class="pc-cell">幾乎無法說話，每組結束後充分恢復</div>
@@ -686,7 +643,7 @@
         <div class="pc-cell">全程可聊天，完成比速度重要</div>
       </div>
       <div class="pc-row race-row">
-        <div class="pc-cell"><strong>比賽陡坡策略<br>Power Hike</strong></div>
+        <div class="pc-cell"><strong>比賽陡坡：Power Hike</strong></div>
         <div class="pc-cell"><span class="rpe" style="background:#F5C57A;color:#6B3F09">7–8</span></div>
         <div class="pc-cell">Z3 · 上坡不超過 85%</div>
         <div class="pc-cell">所有陡坡改快走，抵頂後才恢復跑步，保護後半段</div>
@@ -694,225 +651,332 @@
     </div>
   </section>
 
-</div><!-- .page -->
+  <!-- REFERENCES -->
+  <section id="refs" class="section">
+    <div class="sec-eye">REFERENCES</div>
+    <h2 class="sec-title">參考來源</h2>
+    <div class="ref-list">
+      <div class="ref-item">
+        <div class="ref-num">01</div>
+        <div class="ref-body">
+          <div class="ref-title">Cardiopulmonary responses and muscle strength influence running performance parameters differently at different slopes</div>
+          <div class="ref-meta">Ehrström et al. (2018) · 越野跑表現預測模型，確立肌耐力（r=0.91）對成績的貢獻高於 VO₂max（r=0.76）</div>
+          <a class="ref-link" href="https://arxiv.org/pdf/2312.11917" target="_blank">arxiv.org →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">02</div>
+        <div class="ref-body">
+          <div class="ref-title">Muscular Endurance for Mountain Athletes: Why Your Legs Fail</div>
+          <div class="ref-meta">Uphill Athlete · 肌耐力是階段性訓練，效益在 8–16 週後停滯，必須建立在最大肌力基礎上才有效</div>
+          <a class="ref-link" href="https://uphillathlete.com/strength-training/muscular-endurance-for-mountain-athletes/" target="_blank">uphillathlete.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">03</div>
+        <div class="ref-body">
+          <div class="ref-title">Effects of Running-Specific Strength Training, Endurance Training, and Concurrent Training on Recreational Endurance Athletes</div>
+          <div class="ref-meta">PMC / NCBI (2022) · 並行訓練安排在非相鄰日可有效防止肌力與耐力適應互相抵消</div>
+          <a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9518107/" target="_blank">ncbi.nlm.nih.gov →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">04</div>
+        <div class="ref-body">
+          <div class="ref-title">Reverse periodization in ultratrail: The road to the 2023 World Mountain and Trail Running Championships</div>
+          <div class="ref-meta">ResearchGate (2024) · 越野跑訓練專項化隨 macrocycle 推進，賽前更多混合與健行型課表</div>
+          <a class="ref-link" href="https://www.researchgate.net/publication/384270112" target="_blank">researchgate.net →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">05</div>
+        <div class="ref-body">
+          <div class="ref-title">Running Periodization Part 1: Linear Periodization</div>
+          <div class="ref-meta">Track & Field News (2022) · 線性週期化模型的假設前提，以及 general → specific 準備期的設計邏輯</div>
+          <a class="ref-link" href="https://trackandfieldnews.com/track-coach/running-periodization-part-1-linear-periodization/" target="_blank">trackandfieldnews.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">06</div>
+        <div class="ref-body">
+          <div class="ref-title">Strength Training Planning Guidelines for Trail Runners</div>
+          <div class="ref-meta">Garmin Blog · 越野跑肌力週期：Hypertrophy → Maximum Strength → Power Endurance → Race Prep</div>
+          <a class="ref-link" href="https://www.garmin.com/en-SG/blog/strength-training/" target="_blank">garmin.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">07</div>
+        <div class="ref-body">
+          <div class="ref-title">Research Spotlight: The interference effect is getting less scary by the day</div>
+          <div class="ref-meta">Stronger by Science (2024) · 並行訓練的干擾效應在訓練量和強度適中時影響有限</div>
+          <a class="ref-link" href="https://www.strongerbyscience.com/research-spotlight-interference-effect/" target="_blank">strongerbyscience.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">08</div>
+        <div class="ref-body">
+          <div class="ref-title">A Comparison of Linear and Daily Undulating Periodized Programs With Equated Volume and Intensity for Strength</div>
+          <div class="ref-meta">Rhea et al., J Strength Cond Res 16(2):250-255 (2002) · 每日波動式週期化（週一輕、週四重）在肌力進步上優於每 4 週才調整一次的線性模式</div>
+          <a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/11991778/" target="_blank">pubmed.ncbi.nlm.nih.gov →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">09</div>
+        <div class="ref-body">
+          <div class="ref-title">High-intensity vs. high-volume resistance training: systemic vs. peripheral fatigue recovery</div>
+          <div class="ref-meta">訓練強度（離力竭距離）是系統性疲勞與神經肌肉恢復時間的主要驅動因素；訓練容積影響的是恢復較快的周邊肌肉疲勞</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">10</div>
+        <div class="ref-body">
+          <div class="ref-title">Intensity and volume of physical exercise influence DOMS and skin temperature differently</div>
+          <div class="ref-meta">Nature Scientific Reports · 強度與容積對 DOMS 及皮膚溫度反應有不同的影響機制，兩者不能互相替代評估</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">11</div>
+        <div class="ref-body">
+          <div class="ref-title">Performance and Training Load Profiles in Recreational Male Trail Runners: Analyzing Their Interactions during Competitions</div>
+          <div class="ref-meta">PMC (2020) · 52 週追蹤研究，比賽距離越長，累積爬升量與配速策略的相關性越強，證實單看里程不足以描述越野跑訓練負荷</div>
+          <a class="ref-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7730662/" target="_blank">pmc.ncbi.nlm.nih.gov →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">12</div>
+        <div class="ref-body">
+          <div class="ref-title">Making the Most of Your Uphill Athlete Training Plan</div>
+          <div class="ref-meta">Uphill Athlete · 山地運動員需同時追蹤距離、爬升、時間三維度；每 300m 爬升增加 10 點 hrTSS 的量化負荷調整公式</div>
+          <a class="ref-link" href="https://uphillathlete.com/making-the-most-of-your-uphill-athlete-training-plan/" target="_blank">uphillathlete.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">13</div>
+        <div class="ref-body">
+          <div class="ref-title">Weekly Volume Planning — Building Toward Goal Event Vertical</div>
+          <div class="ref-meta">Uphill Athlete Forums · 建議基礎期某幾週讓週爬升量達到目標賽事爬升的 100%，並從早期 30–50% 開始逐步建立</div>
+          <a class="ref-link" href="https://uphillathlete.com/forums/topic/weekly-volume-planning-2/" target="_blank">uphillathlete.com →</a>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">14</div>
+        <div class="ref-body">
+          <div class="ref-title">Breaking Down VAM and How to Use It in Training</div>
+          <div class="ref-meta">TrainingPeaks · VAM（每小時垂直爬升公尺數）的計算方式與應用，業餘越野跑者常見落在 400–700 m/h，職業選手陡坡可超過 1,000 m/h</div>
+          <a class="ref-link" href="https://www.trainingpeaks.com/coach-blog/breaking-down-vam/" target="_blank">trainingpeaks.com →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表
-</footer>
+</div>
+
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表</footer>
 
 <script>
 const DN = ['一','二','三','四','五','六','日'];
 const MAX_KM = 60;
 
+function strCls(s){
+  if(!s) return '';
+  const num = s.slice(-1);
+  return `str-p${num}`;
+}
+function strLbl(s){
+  if(!s) return '';
+  const reduced = s.includes('↓');
+  const role = s.startsWith('A') ? '維持' : '主要';
+  return role + (reduced ? ' ↓' : '');
+}
+
 const weeks = [
-  {w:1,ph:'p1',badge:'第一期 — 基礎',km:32,
-   focus:'適應越野地形，以輕鬆有氧為主，肌力著重動作控制',
+  {w:1,ph:'p1',badge:'第一期 — 基礎',km:32,elev:'400m',
+   focus:'公路 LT2 節奏跑建立有氧基底（段落式 3×8min）；肌力進入最大肌力期，A 維持劑量保護隔天課表',
    days:[
-    {t:'easy', a:'輕鬆跑',     v:'基隆河步道',  km:'7km', str:'A'},
-    {t:'hill', a:'爬坡走跑×3', v:'象山',         km:'5km', e:'↑549m'},
-    {t:'easy', a:'輕鬆跑',     v:'住家附近',    km:'5km', str:'B'},
-    {t:'rest', a:'全休',       v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',     v:'住家附近',    km:'3km'},
-    {t:'long', a:'長跑 越野',  v:'陽明山冷水坑',km:'12km',e:'↑450m'},
-    {t:'rest', a:'全休',       v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km', str:'A1'},
+    {t:'tempo',a:'節奏跑 3×8min',  v:'基隆河步道',  km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'5km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
+    {t:'long', a:'長跑 平緩越野',  v:'陽明山冷水坑',km:'12km',e:'↑400m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
   ]},
-  {w:2,ph:'p1',badge:'第一期 — 基礎',km:36,
-   focus:'加入爬坡重複跑，建立垂直爬升能力',
+  {w:2,ph:'p1',badge:'第一期 — 基礎',km:36,elev:'600m',
+   focus:'節奏跑段落拉長至 3×10min；最大肌力確認動作品質後開始漸進重量',
    days:[
-    {t:'easy', a:'輕鬆跑 + 核心',v:'基隆河步道',km:'6km', str:'A'},
-    {t:'hill', a:'爬坡重複×6',   v:'象山',       km:'7km', e:'↑1,098m'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',  km:'6km', str:'B'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',  km:'3km'},
-    {t:'long', a:'長跑 含爬升',  v:'陽明山竹子湖',km:'14km',e:'↑600m'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑 + 核心',  v:'基隆河步道',  km:'6km',str:'A1'},
+    {t:'tempo',a:'節奏跑 3×10min', v:'基隆河步道',  km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'6km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
+    {t:'long', a:'長跑 緩坡越野',  v:'陽明山竹子湖',km:'14km',e:'↑600m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
   ]},
-  {w:3,ph:'p1',badge:'第一期 — 基礎',km:40,
-   focus:'引入節奏跑，在仙跡岩感受配速控制',
+  {w:3,ph:'p1',badge:'第一期 — 基礎',km:40,elev:'750m',
+   focus:'首次連續節奏跑 25min；感受穩定維持 LT2 強度的節奏，肌力漸進加重',
    days:[
-    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'7km', str:'A'},
-    {t:'tempo', a:'節奏跑 3×2km', v:'仙跡岩',    km:'8km', e:'↑432m'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'7km', str:'B'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'2km'},
-    {t:'long',  a:'長跑 爬升多',  v:'陽明山面天山',km:'16km',e:'↑750m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km',str:'A1'},
+    {t:'tempo',a:'節奏跑 持續 25min',v:'基隆河步道',km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'7km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'2km'},
+    {t:'long', a:'長跑 含爬升',    v:'陽明山面天山',km:'16km',e:'↑750m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
   ]},
-  {w:4,ph:'rec',badge:'恢復週',km:25,
-   focus:'降量 40%，讓第一期刺激被身體吸收，不追重量',
+  {w:4,ph:'rec',badge:'恢復週',km:25,elev:'~280m',elevEst:true,
+   focus:'降量 40%；肌力維持輕量確保動作模式，讓第一期適應充分吸收',
    days:[
-    {t:'easy', a:'輕鬆跑', v:'住家附近',    km:'6km', str:'A'},
-    {t:'easy', a:'輕鬆跑', v:'仙跡岩輕鬆段',km:'5km'},
-    {t:'easy', a:'輕鬆跑', v:'住家附近',    km:'5km', str:'B'},
-    {t:'rest', a:'全休',   v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑', v:'住家附近',    km:'2km'},
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'6km',str:'A1↓'},
+    {t:'easy', a:'輕鬆跑',  v:'仙跡岩輕鬆段',km:'5km'},
+    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'5km',str:'B1↓'},
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'2km'},
     {t:'long', a:'輕鬆長跑',v:'陽明山二子坪',km:'7km'},
-    {t:'rest', a:'全休',   v:'輕伸展+按摩'},
+    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
   ]},
-  {w:5,ph:'p2',badge:'第二期 — 進展',km:44,
-   focus:'肌力升至 3 組，爬坡場地升級仙跡岩，長跑進主峰系統',
+  {w:5,ph:'p2',badge:'第二期 — 進展',km:44,elev:'2,052m',
+   focus:'跑步轉向坡道 VO₂max 刺激；肌力轉為爆發力，B 加入跳箱與落地控制',
    days:[
-    {t:'easy', a:'輕鬆跑 + 核心',v:'基隆河步道',km:'7km', str:'A'},
-    {t:'hill', a:'爬坡重複×8',   v:'仙跡岩',    km:'8km', e:'↑1,152m'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',  km:'7km', str:'B'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',  km:'4km'},
+    {t:'easy', a:'輕鬆跑 + 核心',v:'基隆河步道',  km:'7km',str:'A2'},
+    {t:'hill', a:'爬坡重複×8',   v:'仙跡岩',      km:'8km',e:'↑1,152m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'7km',str:'B2'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'4km'},
     {t:'long', a:'長跑 越野',    v:'陽明山七星山',km:'18km',e:'↑900m'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
   ]},
-  {w:6,ph:'p2',badge:'第二期 — 進展',km:48,
-   focus:'引入山路間歇，Nordic Curl 保護下坡的腿後腱',
+  {w:6,ph:'p2',badge:'第二期 — 進展',km:48,elev:'1,700m',
+   focus:'山路間歇引入更多下坡段，爆發力肌力加入落地緩衝訓練神經肌肉控制',
    days:[
-    {t:'easy',  a:'輕鬆跑',     v:'基隆河步道',  km:'8km', str:'A'},
-    {t:'tempo', a:'間歇 5×1km', v:'陽明山小油坑',km:'10km',e:'↑700m'},
-    {t:'easy',  a:'輕鬆跑',     v:'住家附近',    km:'8km', str:'B'},
-    {t:'rest',  a:'全休',       v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',     v:'住家附近',    km:'4km'},
-    {t:'long',  a:'長跑 含下坡',v:'陽明山大屯山',km:'18km',e:'↑1,000m'},
-    {t:'rest',  a:'全休',       v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',      v:'基隆河步道',   km:'8km',str:'A2'},
+    {t:'hill', a:'間歇 5×1km', v:'陽明山小油坑', km:'10km',e:'↑700m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'8km',str:'B2'},
+    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'4km'},
+    {t:'long',  a:'長跑 含下坡', v:'陽明山大屯山', km:'18km',e:'↑1,000m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
   ]},
-  {w:7,ph:'p2',badge:'第二期 — 進展',km:52,
-   focus:'雙日連跑模擬疲勞累積，週三肌力後注意腿部恢復',
+  {w:7,ph:'p2',badge:'第二期 — 進展',km:52,elev:'1,900m',
+   focus:'VO₂max 強度最高週，雙日連跑模擬疲勞，A/B 皆不練到力竭',
    days:[
-    {t:'easy', a:'輕鬆跑',       v:'基隆河步道',   km:'9km', str:'A'},
-    {t:'hill', a:'爬坡節奏跑',   v:'陽明山七星山', km:'10km',e:'↑800m'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',     km:'9km', str:'B'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy', a:'疲勞腿輕跑',   v:'住家附近',     km:'4km'},
-    {t:'long', a:'長跑 模擬賽況',v:'陽明山 七星+油坑',km:'20km',e:'↑1,100m'},
-    {t:'rest', a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',       v:'基隆河步道',     km:'9km',str:'A2'},
+    {t:'hill', a:'爬坡節奏間歇', v:'陽明山七星山',   km:'10km',e:'↑800m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',       km:'9km',str:'B2'},
+    {t:'easy', a:'疲勞腿輕跑',   v:'住家附近',       km:'4km'},
+    {t:'long', a:'長跑 模擬越野',v:'陽明山 七星+油坑',km:'20km',e:'↑1,100m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
   ]},
-  {w:8,ph:'rec',badge:'恢復週',km:28,
-   focus:'第二期吸收期，肌力保 2 組輕量，專注關節活動度',
+  {w:8,ph:'rec',badge:'恢復週',km:28,elev:'~280m',elevEst:true,
+   focus:'第二期吸收期；肌力維持爆發力動作，降量專注落地品質',
    days:[
-    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km', str:'A'},
+    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'A2↓'},
     {t:'easy', a:'輕鬆跑',   v:'仙跡岩輕鬆段',km:'6km'},
-    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km', str:'B'},
     {t:'rest', a:'全休',     v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'B2↓'},
     {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'2km'},
     {t:'long', a:'輕鬆長跑', v:'陽明山二子坪',km:'8km'},
     {t:'rest', a:'全休',     v:'輕伸展+按摩'},
   ]},
-  {w:9,ph:'p3',badge:'第三期 — 強化',km:54,
-   focus:'強化期首週，完成首次 22km 越野長跑，熟悉石階與泥路地感',
+  {w:9,ph:'p3',badge:'第三期 — 強化',km:54,elev:'2,060m',
+   focus:'跑步回到 LT2 但全面越野化；肌力轉為肌耐力，B 加入 Box Step-down 保護下坡',
    days:[
-    {t:'easy',  a:'輕鬆跑',      v:'基隆河步道',km:'8km', str:'A'},
-    {t:'tempo', a:'節奏跑 4×3km',v:'目標賽道或仙跡岩',km:'12km',e:'↑860m'},
-    {t:'easy',  a:'輕鬆跑',      v:'住家附近',  km:'8km', str:'B'},
-    {t:'rest',  a:'全休',        v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',      v:'住家附近',  km:'4km'},
-    {t:'long',  a:'越野長跑①',   v:'目標賽道 / 陽明山',km:'22km',e:'↑1,200m'},
-    {t:'rest',  a:'全休',        v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',        v:'基隆河步道',     km:'8km',str:'A3'},
+    {t:'tempo',a:'越野節奏 4×3km',v:'目標賽道/仙跡岩',km:'12km',e:'↑860m'},
+    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'8km',str:'B3'},
+    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'4km'},
+    {t:'long', a:'越野長跑①',     v:'目標賽道/陽明山',km:'22km',e:'↑1,200m'},
+    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
   ]},
-  {w:10,ph:'p3',badge:'第三期 — 強化',km:58,
-   focus:'本週最高爬升負荷，長跑延伸至 24km，全程練習 Power Hike 上坡',
+  {w:10,ph:'p3',badge:'第三期 — 強化',km:58,elev:'2,740m',elevPeak:true,
+   focus:'越野 LT2 強度最高週，最長單日爬升；肌耐力加入 Nordic Curl 與離心踏步強化下坡',
    days:[
-    {t:'easy', a:'輕鬆跑',     v:'基隆河步道',km:'10km',str:'A'},
-    {t:'hill', a:'長坡重複×3', v:'目標賽道或高強度越野',km:'12km',e:'↑1,290m'},
-    {t:'easy', a:'輕鬆跑',     v:'住家附近',  km:'10km',str:'B'},
-    {t:'rest', a:'全休',       v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',     v:'住家附近',  km:'2km'},
-    {t:'long', a:'越野長跑②', v:'目標賽道 / 陽明山東縱走',km:'24km',e:'↑1,450m'},
-    {t:'rest', a:'全休',       v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',           v:'基隆河步道',  km:'10km',str:'A3'},
+    {t:'tempo',a:'越野長坡 LT2 3×8min',v:'目標賽道', km:'12km',e:'↑1,290m'},
+    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'10km',str:'B3'},
+    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'2km'},
+    {t:'long', a:'越野長跑②',        v:'目標賽道/陽明山',km:'24km',e:'↑1,450m'},
+    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
   ]},
-  {w:11,ph:'p3',badge:'第三期 — 強化',km:60,
-   focus:'峰值週：肌力降回 2×12，全力衝刺 26km 模擬配速長跑',
+  {w:11,ph:'p3',badge:'第三期 — 強化',km:60,elev:'1,600m',
+   focus:'峰值週：A/B 同步降容積保護長跑品質，全力備戰 26km 模擬配速越野長跑',
    days:[
-    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'8km', str:'A↓'},
-    {t:'tempo', a:'節奏跑（平路）',v:'平路或基隆河',km:'10km'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km', str:'B↓'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km'},
-    {t:'long',  a:'越野長跑③',   v:'目標賽道 / 高強度越野',km:'26km',e:'↑1,600m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',          v:'基隆河步道',   km:'8km',str:'A3↓'},
+    {t:'tempo',a:'越野節奏 持續30min',v:'平路或陽明山',km:'10km'},
+    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km',str:'B3↓'},
+    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km'},
+    {t:'long', a:'越野長跑③',       v:'目標賽道/高強度越野',km:'26km',e:'↑1,600m'},
+    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
   ]},
-  {w:12,ph:'p4',badge:'第四期 — 減量',km:42,
-   focus:'開始降量，肌力降至 2×10，保持神經肌肉連結',
+  {w:12,ph:'p4',badge:'第四期 — 減量',km:42,elev:'932m',
+   focus:'跑量開始下降，肌力轉為活化維持，不追重量',
    days:[
-    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'8km', str:'A'},
+    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'8km', str:'A4'},
     {t:'tempo', a:'節奏跑 3×2km', v:'仙跡岩',    km:'9km', e:'↑432m'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km', str:'B'},
     {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km', str:'B4'},
     {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'3km'},
     {t:'long',  a:'輕鬆長跑',     v:'陽明山二子坪',km:'14km',e:'↑500m'},
     {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
   ]},
-  {w:13,ph:'p4',badge:'第四期 — 減量',km:26,
-   focus:'大幅降量，肌力只做活化組，準備補給與裝備測試',
+  {w:13,ph:'p4',badge:'第四期 — 減量',km:26,elev:'~200m',elevEst:true,
+   focus:'大幅降量，活化肌力維持感覺，測試比賽日補給策略與裝備',
    days:[
-    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'A↓↓'},
+    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'A4'},
     {t:'tempo', a:'短間歇 4×400m', v:'平路操場',  km:'5km'},
-    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'B↓↓'},
     {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'B4'},
     {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'3km'},
     {t:'easy',  a:'輕鬆跑',        v:'仙跡岩輕鬆段',km:'8km'},
     {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
   ]},
-  {w:14,ph:'race',badge:'比賽週',km:40,
-   focus:'賽前不做肌力，週四日全休，充足睡眠與補充碳水，信任 14 週的累積',
+  {w:14,ph:'race',badge:'比賽週',km:40,elev:'1,500m+',
+   focus:'賽前不做肌力，週四週五全休，充足睡眠與補充碳水，信任 14 週的累積',
    days:[
     {t:'easy', a:'輕鬆 + 加速跑', v:'基隆河步道', km:'4km'},
     {t:'easy', a:'活化輕鬆跑',    v:'住家附近',   km:'3km'},
     {t:'easy', a:'輕鬆跑',        v:'住家附近',   km:'3km'},
-    {t:'rest', a:'全休',          v:'靜態伸展'},
-    {t:'rest', a:'全休',          v:'裝備確認'},
+    {t:'rest', a:'全休',           v:'靜態伸展'},
+    {t:'rest', a:'全休',           v:'裝備確認'},
     {t:'race', a:'🏆 比賽日！',    v:'目標越野賽', km:'30km',e:'↑1,500m+'},
     {t:'rest', a:'恢復 + 慶祝',   v:''},
   ]},
 ];
 
-function strCls(s){
-  if(!s) return '';
-  if(s.includes('↓↓')) return 'str-lt';
-  if(s.startsWith('A')) return 'str-a';
-  return 'str-b';
-}
-function strLbl(s){
-  if(!s) return '';
-  if(s.includes('↓↓')) return '活化組 '+(s.startsWith('A')?'A':'B');
-  if(s.includes('↓'))  return '肌力 '+(s.startsWith('A')?'A':'B')+' ↓';
-  return '肌力 '+s;
-}
-
 function buildDay(d){
   const el = document.createElement('div');
   el.className = `day dt-${d.t}`;
-  let html = `<div class="d-name">${d._dn}</div>`;
-  html += `<div class="d-act">${d.a}</div>`;
-  if(d.v) html += `<div class="d-venue">${d.v}</div>`;
-  const stats = [d.km, d.e].filter(Boolean).join(' ');
-  if(stats) html += `<div class="d-stats">${stats}</div>`;
-  if(d.str) html += `<div class="d-str ${strCls(d.str)}">${strLbl(d.str)}</div>`;
-  el.innerHTML = html;
+  let h = `<div class="d-name">${d._dn}</div><div class="d-act">${d.a}</div>`;
+  if(d.v) h += `<div class="d-venue">${d.v}</div>`;
+  const st = [d.km, d.e].filter(Boolean).join(' ');
+  if(st) h += `<div class="d-stats">${st}</div>`;
+  if(d.str) h += `<div class="d-str ${strCls(d.str)}">${strLbl(d.str)}</div>`;
+  el.innerHTML = h;
   return el;
 }
 
 function buildCard(w){
-  const phCls = {p1:'ph-p1',p2:'ph-p2',p3:'ph-p3',p4:'ph-p4',rec:'ph-rec',race:'ph-race'}[w.ph]||'ph-rec';
+  const cls = {p1:'ph-p1',p2:'ph-p2',p3:'ph-p3',p4:'ph-p4',rec:'ph-rec',race:'ph-race'}[w.ph]||'ph-rec';
   const pct = Math.round(w.km/MAX_KM*100);
-  const card = document.createElement('div');
-  card.className = `wcard ${phCls}`;
-  card.dataset.ph = w.ph;
-
+  const c = document.createElement('div');
+  c.className = `wcard ${cls}`;
+  c.dataset.ph = w.ph;
   const head = document.createElement('div');
   head.className = 'wcard-head';
   head.setAttribute('data-wnum', String(w.w).padStart(2,'0'));
-  head.innerHTML = `
-    <span class="w-num">W${String(w.w).padStart(2,'0')}</span>
-    <span class="w-badge">${w.badge}</span>
-    <span class="w-focus">${w.focus}</span>
-    <span class="w-km">${w.km} km</span>
-    <div class="w-prog"><div class="w-prog-fill" style="width:${pct}%"></div></div>`;
-  card.appendChild(head);
-
+  head.innerHTML = `<span class="w-num">W${String(w.w).padStart(2,'0')}</span><span class="w-badge">${w.badge}</span><span class="w-focus">${w.focus}</span><span class="w-km">${w.km} km</span><div class="w-prog"><div class="w-prog-fill" style="width:${pct}%"></div></div>`;
+  c.appendChild(head);
   const body = document.createElement('div');
   body.className = 'wcard-body';
   const grid = document.createElement('div');
   grid.className = 'day-grid';
-  w.days.forEach((d,i)=>{ d._dn = DN[i]; grid.appendChild(buildDay(d)); });
+  w.days.forEach((d,i) => { d._dn = DN[i]; grid.appendChild(buildDay(d)); });
   body.appendChild(grid);
-  card.appendChild(body);
-  return card;
+  c.appendChild(body);
+  return c;
 }
 
 function renderWeeks(){
@@ -920,15 +984,11 @@ function renderWeeks(){
   weeks.forEach(w => list.appendChild(buildCard(w)));
 }
 
-let activePhase = 'all';
+let cur = 'all';
 function filterPhase(btn, ph){
-  activePhase = ph;
-  document.querySelectorAll('.ptab').forEach(b=>{
-    b.className = 'ptab' + (b===btn ? ` a-${ph==='all'?'all':ph}` : '');
-  });
-  document.querySelectorAll('.wcard').forEach(c=>{
-    c.classList.toggle('hidden', ph!=='all' && c.dataset.ph!==ph);
-  });
+  cur = ph;
+  document.querySelectorAll('.ptab').forEach(b => b.className = 'ptab' + (b===btn ? ` a-${ph==='all'?'all':ph}` : ''));
+  document.querySelectorAll('.wcard').forEach(c => c.classList.toggle('hidden', ph!=='all' && c.dataset.ph!==ph));
 }
 
 renderWeeks();
