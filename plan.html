@@ -86,7 +86,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .ph-rec .w-prog-fill{background:var(--text-3);} .ph-race .w-prog-fill{background:var(--race-red);}
 .wcard-body{padding:10px 18px 14px;}
 .day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
-.day{border-radius:var(--r-sm);padding:6px 6px 7px;min-height:88px;display:flex;flex-direction:column;}
+.day{border-radius:var(--r-sm);padding:6px 6px 7px;min-height:88px;display:flex;flex-direction:column;cursor:pointer;transition:filter .12s;}
+.day:hover{filter:brightness(.92);}
+.day:active{filter:brightness(.86);}
 .d-name{font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:.08em;margin-bottom:4px;}
 .d-act{font-size:10px;line-height:1.3;font-weight:500;flex:1;}
 .d-venue{font-size:9px;font-weight:500;margin-top:3px;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -103,6 +105,35 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;font-size:12px;color:var(--text-3);max-width:1160px;margin:0 auto;}
 @media(max-width:860px){.page-top{padding-left:16px;padding-right:16px;}.plan-header{flex-direction:column;}.nav-links{gap:12px;overflow-x:auto;flex-wrap:nowrap;}}
 @media(max-width:560px){.day-grid{overflow-x:auto;grid-template-columns:repeat(7,minmax(86px,1fr));}.wcard-body{overflow:hidden;}}
+/* ── Modal ── */
+.md-overlay{position:fixed;inset:0;background:rgba(26,23,20,.52);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s;}
+.md-overlay.open{opacity:1;pointer-events:auto;}
+.md-card{background:var(--surface);border-radius:var(--r-lg);max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 72px rgba(0,0,0,.24);transform:translateY(18px);transition:transform .26s cubic-bezier(.2,.8,.3,1);}
+.md-overlay.open .md-card{transform:translateY(0);}
+.md-top{padding:18px 18px 14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--border);}
+.md-cat{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;flex-shrink:0;margin-top:3px;}
+.md-info{flex:1;min-width:0;}
+.md-act{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--text-1);line-height:1.25;margin-bottom:4px;}
+.md-meta{font-size:11px;color:var(--text-3);}
+.md-close{width:28px;height:28px;border:1px solid var(--border);border-radius:50%;background:transparent;cursor:pointer;flex-shrink:0;font-size:14px;color:var(--text-3);display:flex;align-items:center;justify-content:center;transition:background .12s;}
+.md-close:hover{background:var(--surface-2);}
+.md-body{padding:16px 18px 22px;display:flex;flex-direction:column;gap:13px;}
+.md-zone-row{display:flex;gap:6px;flex-wrap:wrap;}
+.md-zone{font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;}
+.md-sec{display:flex;flex-direction:column;gap:5px;}
+.md-sec-lbl{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+.md-sec-txt{font-size:13px;color:var(--text-2);line-height:1.65;}
+.md-tips{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.md-tips li{font-size:12px;color:var(--text-2);padding-left:14px;position:relative;line-height:1.5;}
+.md-tips li::before{content:'·';position:absolute;left:3px;color:var(--text-3);font-weight:700;}
+.md-str{background:var(--surface-2);border-radius:var(--r-sm);padding:13px 14px;}
+.md-str-role{font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px;}
+.md-str-phase{font-size:10px;color:var(--text-3);margin-bottom:6px;}
+.md-str-dose{font-family:var(--fm);font-size:10px;color:var(--green-dk);background:var(--green-lt);padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:9px;}
+.md-str-list{list-style:none;display:flex;flex-direction:column;gap:3px;margin-bottom:8px;}
+.md-str-list li{font-size:12px;color:var(--text-2);padding-left:16px;position:relative;}
+.md-str-list li::before{content:'—';position:absolute;left:0;color:var(--text-3);}
+.md-str-note{font-size:11px;color:var(--text-3);font-style:italic;line-height:1.5;}
   </style>
 </head>
 <body>
@@ -172,7 +203,21 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
   </section>
 </div>
 
-<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.2.1</span></footer>
+<div class="md-overlay" id="mdOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="md-card">
+    <div class="md-top">
+      <span class="md-cat" id="mdCat"></span>
+      <div class="md-info">
+        <div class="md-act" id="mdAct"></div>
+        <div class="md-meta" id="mdMeta"></div>
+      </div>
+      <button class="md-close" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="md-body" id="mdBody"></div>
+  </div>
+</div>
+
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.3.0</span></footer>
 
 <script>
 const DN = ['一','二','三','四','五','六','日'];
@@ -350,6 +395,7 @@ const weeks = [
 function buildDay(d){
   const el = document.createElement('div');
   el.className = `day dt-${d.t}`;
+  el.onclick = () => openDetail(d);
   let h = `<div class="d-name">${d._dn}</div><div class="d-act">${d.a}</div>`;
   if(d.v) h += `<div class="d-venue">${d.v}</div>`;
   const st = [d.km, d.e].filter(Boolean).join(' ');
@@ -374,7 +420,7 @@ function buildCard(w){
   body.className = 'wcard-body';
   const grid = document.createElement('div');
   grid.className = 'day-grid';
-  w.days.forEach((d,i) => { d._dn = DN[i]; grid.appendChild(buildDay(d)); });
+  w.days.forEach((d,i) => { d._dn = DN[i]; d._w = w.w; grid.appendChild(buildDay(d)); });
   body.appendChild(grid);
   c.appendChild(body);
   return c;
@@ -384,6 +430,101 @@ function renderWeeks(){
   const list = document.getElementById('weekList');
   weeks.forEach(w => list.appendChild(buildCard(w)));
 }
+
+// ── Workout categories ──
+const CATS = {
+  easy:{label:'輕鬆跑',bg:'#E8F3DA',fg:'#1E4007',rpe:'4–5',hr:'Z1–Z2 · 65–75%',
+    desc:'有氧基底訓練，全程維持對話配速。完成比速度重要，是所有高強度課表的基礎。',
+    tips:['保持能完整說話的配速，不因路感好而加速','越野段落以時間為準，不看每公里配速','陡坡改快走，心率降回 Z2 再恢復跑步','下坡放鬆，不要衝刺']},
+  tempo:{label:'節奏跑',bg:'#E3EFFC',fg:'#0A3D78',rpe:'6–7',hr:'Z3 · 80–87%',
+    desc:'乳酸閾值訓練（LT2）。感覺「舒服地難」，說話只能說短句。最有效提升有氧閾值的課表。',
+    tips:['每段開頭刻意慢一點，不要第一分鐘就全力','段落結束恢復至 RPE 3–4 後再開始下一段','越野節奏跑以努力程度為準，不看平路配速','後段掉速是強度過高的信號，下次降低']},
+  hill:{label:'間歇跑',bg:'#FCEAF3',fg:'#6D1F45',rpe:'8–9',hr:'Z4–Z5 · 88–95%',
+    desc:'VO₂max 刺激訓練。爬坡重複或山路間歇，幾乎無法說話。提升最大攝氧量與神經肌肉效率。',
+    tips:['每組以最大可持續努力衝坡，不是短跑衝刺','下坡走回起點作為恢復，不要跑回去','最後一組品質應與第一組接近，若掉太多就縮短組數','有意識練習下坡落地控制，減少制動力']},
+  long:{label:'長跑',bg:'#FDF1E1',fg:'#6B3F09',rpe:'4–5 / 陡坡 7–8',hr:'Z1–Z2，陡坡不超過 85%',
+    desc:'累積爬升適應與脂肪燃燒效率。後段能否維持節奏是關鍵，全程完成比配速重要。',
+    tips:['開頭 30 分鐘刻意偏慢，暖開再說','陡坡全部改 Power Hike（快走），抵頂才恢復跑','補給每 40–50 分鐘補一次，不要等餓了才補','最後 20% 若還有力，才可以稍微加速']},
+  rest:{label:'休息日',bg:'#ECEAE4',fg:'#504C47',rpe:null,hr:null,
+    desc:'主動恢復或完全休息。適應發生在休息時，訓練刺激後的恢復同樣是訓練的一部分。',
+    tips:['輕度步行或伸展 20–30 分鐘可促進血液循環','避免因感覺好而額外加練','睡眠是最強的恢復工具，確保 7–9 小時','可安排按摩、滾筒或冷熱水交替浴']},
+  race:{label:'比賽日',bg:'#FDDBDF',fg:'#7A1225',rpe:'7–8 平段',hr:'Z3，上坡不超過 85%',
+    desc:'14 週準備的總結。策略比體力更重要——前半段保守，讓後半段有子彈可用。',
+    tips:['前 10km 刻意壓住，感覺「太慢」才對','所有陡坡改 Power Hike，保住心率跑好後半段','補給按計畫執行，每個補給站都喝水','最後 5km 才開始加速，全力留在終點線']}
+};
+
+// ── Strength sessions (matches strength.html) ──
+const STR = {
+  A1:{role:'Session A · 維持劑量',phase:'第一期 · 最大肌力',dose:'70–75% 1RM · RIR 3–4 · 2–3 組×5–6 下',
+    moves:['深蹲','臀橋','站姿提踵','平板 / Bird Dog'],
+    note:'離心節奏正常，功能是不干擾隔天關鍵課表'},
+  B1:{role:'Session B · 主要劑量',phase:'第一期 · 最大肌力',dose:'80–85% 1RM · RIR 1–2 · 4 組×4–6 下',
+    moves:['保加利亞分腿蹲','RDL（離心 2–3 秒）','Nordic Curl','側平板'],
+    note:'離心刻意放慢至 2–3 秒；完成後感覺「練過」而非「練爆」'},
+  A2:{role:'Session A · 維持劑量',phase:'第二期 · 爆發力',dose:'50–55% 1RM · RIR 4+ · 2 組×8 下',
+    moves:['深蹲（維持基礎）','臀橋','平板'],
+    note:'此期 A 維持動作模式，不更換動作，不追重量'},
+  B2:{role:'Session B · 主要劑量',phase:'第二期 · 爆發力',dose:'60–65% 1RM · RIR 3 · 3 組×6–8 下',
+    moves:['跳箱 / 深蹲跳','側向跳躍','分腿蹲（向心求快）','Nordic Curl','落地控制練習'],
+    note:'向心求快，離心不刻意放慢；爆發力訓練不應到力竭'},
+  A3:{role:'Session A · 維持劑量',phase:'第三期 · 肌耐力',dose:'25–30% 1RM · RIR 4+ · 2 組×12–15 下',
+    moves:['深蹲','臀橋','站姿提踵','平板（高反覆）'],
+    note:'高次數輕量，維持動作品質，感受肌肉持續用力即可'},
+  B3:{role:'Session B · 主要劑量',phase:'第三期 · 肌耐力',dose:'30–40% 1RM · RIR 2–3 · 3 組×15–20 下',
+    moves:['分腿蹲','RDL','Nordic Curl','Box Step-down 離心踏步','側平板'],
+    note:'Box Step-down 離心 2–3 秒，強化下坡煞車肌群'},
+  A4:{role:'Session A · 維持劑量',phase:'第四期 · 活化',dose:'極輕 · RIR 5+ · 1 組×10 下',
+    moves:['深蹲（徒手）','臀橋（徒手）','平板'],
+    note:'減量週，維持神經肌肉感覺，不追任何強度'},
+  B4:{role:'Session B · 主要劑量',phase:'第四期 · 活化',dose:'輕量 · RIR 4+ · 1–2 組×10 下',
+    moves:['分腿蹲（徒手）','RDL（輕量）','側平板'],
+    note:'賽前大幅降量，感覺肌肉有動到即可，不做到疲勞'}
+};
+
+function openDetail(d){
+  const cat = CATS[d.t] || CATS.rest;
+  const mCat = document.getElementById('mdCat');
+  mCat.textContent = cat.label;
+  mCat.style.cssText = `background:${cat.bg};color:${cat.fg}`;
+  document.getElementById('mdAct').textContent = d.a;
+  const meta = [`W${String(d._w||'').padStart(2,'0')} 週${d._dn||''}`, d.v, [d.km,d.e].filter(Boolean).join(' ')].filter(Boolean);
+  document.getElementById('mdMeta').textContent = meta.join(' · ');
+
+  let html = '';
+  if(cat.rpe){
+    html += `<div class="md-zone-row">
+      <span class="md-zone" style="background:${cat.bg};color:${cat.fg}">RPE ${cat.rpe}</span>
+      <span class="md-zone" style="background:var(--surface-2);color:var(--text-2)">${cat.hr}</span>
+    </div>`;
+  }
+  html += `<div class="md-sec"><div class="md-sec-lbl">說明</div><div class="md-sec-txt">${cat.desc}</div></div>`;
+  html += `<div class="md-sec"><div class="md-sec-lbl">執行重點</div><ul class="md-tips">${cat.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;
+
+  if(d.str){
+    const key = d.str.replace('↓','');
+    const s = STR[key];
+    if(s){
+      const reduced = d.str.includes('↓');
+      html += `<div class="md-str">
+        <div class="md-str-role">${s.role}</div>
+        <div class="md-str-phase">${s.phase}${reduced?' · 本週降量 ~40%':''}</div>
+        <span class="md-str-dose">${s.dose}</span>
+        <ul class="md-str-list">${s.moves.map(m=>`<li>${m}</li>`).join('')}</ul>
+        <div class="md-str-note">${s.note}</div>
+      </div>`;
+    }
+  }
+
+  document.getElementById('mdBody').innerHTML = html;
+  document.getElementById('mdOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail(){
+  document.getElementById('mdOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeDetail(); });
 
 let cur = 'all';
 function filterPhase(btn, ph){
