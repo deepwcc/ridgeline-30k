@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>課表 — 嶺線計畫 30K</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#F5F2ED; --surface:#FFFFFF; --surface-2:#ECEAE4; --border:#DDD9D1;
+  --text-1:#1A1714; --text-2:#504C47; --text-3:#928E88;
+  --green-dk:#1E4007; --green:#3B6D11; --green-lt:#E8F3DA;
+  --amber:#B5720A; --amber-lt:#FDF1E1;
+  --blue:#185FA5; --blue-lt:#E3EFFC;
+  --red:#AA2C1A; --red-lt:#FCECE9;
+  --purple:#6B1F7A; --purple-lt:#F0E5FC;
+  --teal:#0B6046; --teal-lt:#DDF8EF;
+  --gray:#504C47; --gray-lt:#ECEAE4;
+  --race-red:#C0213B; --race-lt:#FDDBDF;
+  --fd:'Syne',sans-serif; --fb:'Plus Jakarta Sans',sans-serif; --fm:'Space Mono',monospace;
+  --r-sm:6px; --r-md:10px; --r-lg:16px;
+}
+html{scroll-behavior:smooth;} body{font-family:var(--fb);background:var(--bg);color:var(--text-1);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;} strong{font-weight:600;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1160px)/2));}
+.nav-brand{font-family:var(--fm);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.08em;}
+.nav-links{display:flex;gap:18px;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-size:13px;color:var(--text-2);font-weight:500;transition:color .15s;}
+.nav-links a:hover{color:var(--text-1);} .nav-links a.active{color:var(--text-1);font-weight:600;}
+.page-top{max-width:1160px;margin:0 auto;padding:48px 20px 0;}
+.page-top .section:first-child{border-top:none;padding-top:0;}
+.section{padding:48px 0;border-top:1px solid var(--border);}
+.sec-eye{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px;}
+.sec-title{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--text-1);margin-bottom:24px;}
+.sub-title{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text-1);margin:28px 0 14px;}
+.plan-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;}
+.plan-header .sec-title{margin-bottom:0;}
+.phase-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.ptab{padding:6px 14px;border-radius:100px;border:1px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;background:var(--surface);color:var(--text-2);transition:all .15s;font-family:var(--fb);}
+.ptab:hover{background:var(--surface-2);}
+.ptab.a-all{background:var(--text-1);color:#fff;border-color:var(--text-1);} .ptab.a-p1{background:var(--amber);color:#fff;border-color:var(--amber);}
+.ptab.a-p2{background:var(--purple);color:#fff;border-color:var(--purple);} .ptab.a-p3{background:var(--teal);color:#fff;border-color:var(--teal);}
+.ptab.a-p4{background:var(--gray);color:#fff;border-color:var(--gray);}
+.wk-struct{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:16px;}
+.ws-lbl{font-size:11px;color:var(--text-3);font-weight:500;margin-right:4px;}
+.ws-d{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;}
+.ws-d.rest{background:var(--surface-2);color:var(--text-2);} .ws-d.easy{background:var(--teal-lt);color:var(--teal);}
+.ws-d.key{background:var(--blue-lt);color:var(--blue);} .ws-d.short{background:var(--green-lt);color:var(--green-dk);}
+.ws-d.long{background:var(--amber-lt);color:var(--amber);}
+.data-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-bottom:20px;}
+.dt-row{display:grid;border-bottom:1px solid var(--border);}
+.dt-row:last-child{border-bottom:none;} .dt-row.hdr{background:var(--surface-2);}
+.dt-cell{padding:11px 14px;font-size:12px;color:var(--text-2);border-right:1px solid var(--border);line-height:1.45;}
+.dt-cell:last-child{border-right:none;}
+.dt-cell.h{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);}
+.dt-cell strong{display:block;color:var(--text-1);font-weight:600;}
+.phase-chip{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:4px;}
+.pc-p1{background:var(--amber-lt);color:#6B3F09;} .pc-p2{background:var(--purple-lt);color:#4A1257;}
+.pc-p3{background:var(--teal-lt);color:#063D2C;} .pc-p4{background:var(--gray-lt);color:#322F2B;}
+.elev-overview-table .dt-row{grid-template-columns:.7fr 1.3fr 1fr 1fr;}
+.elev-overview-table .dt-cell strong.peak{color:var(--red);}
+.elev-note{font-size:11px;color:var(--text-3);margin:-8px 0 20px;}
+.week-list{display:flex;flex-direction:column;gap:10px;}
+.wcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;border-left:4px solid var(--border);transition:box-shadow .15s;}
+.wcard:hover{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+.wcard.ph-p1{border-left-color:var(--amber);} .wcard.ph-p2{border-left-color:var(--purple);}
+.wcard.ph-p3{border-left-color:var(--teal);} .wcard.ph-p4{border-left-color:var(--gray);}
+.wcard.ph-rec{border-left-color:var(--text-3);} .wcard.ph-race{border-left-color:var(--race-red);}
+.wcard.hidden{display:none;}
+.wcard-head{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.wcard-head::after{content:attr(data-wnum);position:absolute;right:80px;top:50%;transform:translateY(-50%);font-family:var(--fm);font-size:52px;font-weight:700;color:var(--border);opacity:.6;pointer-events:none;letter-spacing:-.04em;line-height:1;}
+.w-num{font-family:var(--fm);font-size:11px;font-weight:700;color:var(--text-3);letter-spacing:.04em;flex-shrink:0;}
+.w-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.04em;flex-shrink:0;}
+.ph-p1 .w-badge{background:var(--amber-lt);color:#6B3F09;} .ph-p2 .w-badge{background:var(--purple-lt);color:#4A1257;}
+.ph-p3 .w-badge{background:var(--teal-lt);color:#063D2C;} .ph-p4 .w-badge{background:var(--gray-lt);color:#322F2B;}
+.ph-rec .w-badge{background:var(--surface-2);color:var(--text-2);} .ph-race .w-badge{background:var(--race-lt);color:var(--race-red);}
+.w-focus{flex:1;font-size:11px;color:var(--text-2);font-style:italic;min-width:0;}
+.w-km{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--text-1);flex-shrink:0;z-index:1;}
+.w-prog{height:2px;background:var(--border);position:absolute;bottom:0;left:0;right:0;}
+.w-prog-fill{height:100%;}
+.ph-p1 .w-prog-fill{background:var(--amber);} .ph-p2 .w-prog-fill{background:var(--purple);}
+.ph-p3 .w-prog-fill{background:var(--teal);} .ph-p4 .w-prog-fill{background:var(--gray);}
+.ph-rec .w-prog-fill{background:var(--text-3);} .ph-race .w-prog-fill{background:var(--race-red);}
+.wcard-body{padding:10px 18px 14px;}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.day{border-radius:var(--r-sm);padding:6px 6px 7px;min-height:88px;display:flex;flex-direction:column;}
+.d-name{font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:.08em;margin-bottom:4px;}
+.d-act{font-size:10px;line-height:1.3;font-weight:500;flex:1;}
+.d-venue{font-size:9px;font-weight:500;margin-top:3px;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.d-stats{font-family:var(--fm);font-size:9px;margin-top:2px;}
+.d-str{font-size:8px;font-weight:700;padding:1px 5px;border-radius:3px;margin-top:3px;align-self:flex-start;letter-spacing:.03em;}
+.dt-rest{background:#ECEAE4;} .dt-rest .d-name,.dt-rest .d-act,.dt-rest .d-venue{color:#928E88;}
+.dt-easy{background:#E8F3DA;} .dt-easy .d-name{color:#3B6D11;} .dt-easy .d-act,.dt-easy .d-venue{color:#1E4007;} .dt-easy .d-stats{color:#3B6D11;}
+.dt-tempo{background:#E3EFFC;} .dt-tempo .d-name{color:#185FA5;} .dt-tempo .d-act,.dt-tempo .d-venue{color:#0A3D78;} .dt-tempo .d-stats{color:#185FA5;}
+.dt-long{background:#FDF1E1;} .dt-long .d-name{color:#B5720A;} .dt-long .d-act,.dt-long .d-venue{color:#6B3F09;} .dt-long .d-stats{color:#B5720A;}
+.dt-hill{background:#FCEAF3;} .dt-hill .d-name{color:#8C2E5B;} .dt-hill .d-act,.dt-hill .d-venue{color:#6D1F45;} .dt-hill .d-stats{color:#8C2E5B;}
+.dt-race{background:#FDDBDF;} .dt-race .d-name{color:#C0213B;} .dt-race .d-act,.dt-race .d-venue{color:#7A1225;} .dt-race .d-stats{color:#C0213B;}
+.str-p1{background:#FDE8D0;color:#7C3B0A;} .str-p2{background:#F0E5FC;color:#6B1F7A;}
+.str-p3{background:#DDF8EF;color:#0B6046;} .str-p4{background:#ECEAE4;color:#504C47;}
+footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;font-size:12px;color:var(--text-3);max-width:1160px;margin:0 auto;}
+@media(max-width:860px){.page-top{padding-left:16px;padding-right:16px;}.plan-header{flex-direction:column;}.nav-links{gap:12px;overflow-x:auto;flex-wrap:nowrap;}}
+@media(max-width:560px){.day-grid{overflow-x:auto;grid-template-columns:repeat(7,minmax(86px,1fr));}.wcard-body{overflow:hidden;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">嶺線計畫 · 30K</a>
+  <ul class="nav-links">
+    <li><a href="concept.html">概念</a></li>
+    <li><a href="plan.html" class="active">課表</a></li>
+    <li><a href="strength.html">肌力</a></li>
+    <li><a href="routes.html">路線</a></li>
+    <li><a href="pacing.html">配速</a></li>
+    <li><a href="refs.html">參考資料</a></li>
+  </ul>
+</nav>
+
+<div class="page-top">
+  <section class="section">
+    <div class="sec-eye">TRAINING SCHEDULE</div>
+    <div class="plan-header">
+      <h2 class="sec-title">14 週訓練課表</h2>
+      <div class="phase-tabs">
+        <button class="ptab a-all" onclick="filterPhase(this,'all')">全部</button>
+        <button class="ptab" onclick="filterPhase(this,'p1')">第一期 基礎</button>
+        <button class="ptab" onclick="filterPhase(this,'p2')">第二期 進展</button>
+        <button class="ptab" onclick="filterPhase(this,'p3')">第三期 強化</button>
+        <button class="ptab" onclick="filterPhase(this,'p4')">第四期 減量</button>
+      </div>
+    </div>
+    <div class="wk-struct">
+      <span class="ws-lbl">每週固定結構</span>
+      <span class="ws-d easy">一 輕鬆 + 肌力A（維持）</span>
+      <span class="ws-d key">二 關鍵課表</span>
+      <span class="ws-d rest">三 全休</span>
+      <span class="ws-d easy">四 輕鬆 + 肌力B（主要）</span>
+      <span class="ws-d short">五 輕鬆 / 交叉訓練</span>
+      <span class="ws-d long">六 長跑</span>
+      <span class="ws-d rest">日 全休</span>
+    </div>
+
+    <div class="sub-title">週爬升總覽（里程 + D+）</div>
+    <div class="data-table elev-overview-table">
+      <div class="dt-row hdr">
+        <div class="dt-cell h">週</div>
+        <div class="dt-cell h">週期</div>
+        <div class="dt-cell h">週總里程</div>
+        <div class="dt-cell h">週總爬升 D+</div>
+      </div>
+      <div class="dt-row"><div class="dt-cell">W1</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">32km</div><div class="dt-cell">400m</div></div>
+      <div class="dt-row"><div class="dt-cell">W2</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">36km</div><div class="dt-cell">600m</div></div>
+      <div class="dt-row"><div class="dt-cell">W3</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">40km</div><div class="dt-cell">750m</div></div>
+      <div class="dt-row"><div class="dt-cell">W4</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">25km</div><div class="dt-cell">~280m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W5</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">44km</div><div class="dt-cell"><strong>2,052m</strong></div></div>
+      <div class="dt-row"><div class="dt-cell">W6</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">48km</div><div class="dt-cell">1,700m</div></div>
+      <div class="dt-row"><div class="dt-cell">W7</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">52km</div><div class="dt-cell">1,900m</div></div>
+      <div class="dt-row"><div class="dt-cell">W8</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">28km</div><div class="dt-cell">~280m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W9</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">54km</div><div class="dt-cell">2,060m</div></div>
+      <div class="dt-row"><div class="dt-cell">W10</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">58km</div><div class="dt-cell"><strong class="peak">2,740m（全期最高）</strong></div></div>
+      <div class="dt-row"><div class="dt-cell">W11</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">60km</div><div class="dt-cell">1,600m</div></div>
+      <div class="dt-row"><div class="dt-cell">W12</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">42km</div><div class="dt-cell">932m</div></div>
+      <div class="dt-row"><div class="dt-cell">W13</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">26km</div><div class="dt-cell">~200m*</div></div>
+      <div class="dt-row"><div class="dt-cell">W14</div><div class="dt-cell"><span class="phase-chip pc-p4">比賽週</span></div><div class="dt-cell">40km</div><div class="dt-cell">1,500m+（比賽）</div></div>
+    </div>
+    <p class="elev-note">* W4／W8／W13 原始課表未標記爬升，依路線典型值（陽明山二子坪／仙跡岩輕鬆段）估算，建議以實際 GPS 記錄校正。</p>
+
+    <div class="week-list" id="weekList"></div>
+  </section>
+</div>
+
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.2.1</span></footer>
+
+<script>
+const DN = ['一','二','三','四','五','六','日'];
+const MAX_KM = 60;
+
+function strCls(s){
+  if(!s) return '';
+  const num = s.slice(-1);
+  return `str-p${num}`;
+}
+function strLbl(s){
+  if(!s) return '';
+  const reduced = s.includes('↓');
+  const role = s.startsWith('A') ? '維持' : '主要';
+  return role + (reduced ? ' ↓' : '');
+}
+
+const weeks = [
+  {w:1,ph:'p1',badge:'第一期 — 基礎',km:32,elev:'400m',
+   focus:'公路 LT2 節奏跑建立有氧基底（段落式 3×8min）；肌力進入最大肌力期，A 維持劑量保護隔天課表',
+   days:[
+    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km', str:'A1'},
+    {t:'tempo',a:'節奏跑 3×8min',  v:'基隆河步道',  km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'5km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
+    {t:'long', a:'長跑 平緩越野',  v:'陽明山冷水坑',km:'12km',e:'↑400m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+  ]},
+  {w:2,ph:'p1',badge:'第一期 — 基礎',km:36,elev:'600m',
+   focus:'節奏跑段落拉長至 3×10min；最大肌力確認動作品質後開始漸進重量',
+   days:[
+    {t:'easy', a:'輕鬆跑 + 核心',  v:'基隆河步道',  km:'6km',str:'A1'},
+    {t:'tempo',a:'節奏跑 3×10min', v:'基隆河步道',  km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'6km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
+    {t:'long', a:'長跑 緩坡越野',  v:'陽明山竹子湖',km:'14km',e:'↑600m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+  ]},
+  {w:3,ph:'p1',badge:'第一期 — 基礎',km:40,elev:'750m',
+   focus:'首次連續節奏跑 25min；感受穩定維持 LT2 強度的節奏，肌力漸進加重',
+   days:[
+    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km',str:'A1'},
+    {t:'tempo',a:'節奏跑 持續 25min',v:'基隆河步道',km:'8km'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'7km',str:'B1'},
+    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'2km'},
+    {t:'long', a:'長跑 含爬升',    v:'陽明山面天山',km:'16km',e:'↑750m'},
+    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
+  ]},
+  {w:4,ph:'rec',badge:'恢復週',km:25,elev:'~280m',elevEst:true,
+   focus:'降量 40%；肌力維持輕量確保動作模式，讓第一期適應充分吸收',
+   days:[
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'6km',str:'A1↓'},
+    {t:'easy', a:'輕鬆跑',  v:'仙跡岩輕鬆段',km:'5km'},
+    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'5km',str:'B1↓'},
+    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'2km'},
+    {t:'long', a:'輕鬆長跑',v:'陽明山二子坪',km:'7km'},
+    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
+  ]},
+  {w:5,ph:'p2',badge:'第二期 — 進展',km:44,elev:'2,052m',
+   focus:'跑步轉向坡道 VO₂max 刺激；肌力轉為爆發力，B 加入跳箱與落地控制',
+   days:[
+    {t:'easy', a:'輕鬆跑 + 核心',v:'基隆河步道',  km:'7km',str:'A2'},
+    {t:'hill', a:'爬坡重複×8',   v:'仙跡岩',      km:'8km',e:'↑1,152m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'7km',str:'B2'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'4km'},
+    {t:'long', a:'長跑 越野',    v:'陽明山七星山',km:'18km',e:'↑900m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+  ]},
+  {w:6,ph:'p2',badge:'第二期 — 進展',km:48,elev:'1,700m',
+   focus:'山路間歇引入更多下坡段，爆發力肌力加入落地緩衝訓練神經肌肉控制',
+   days:[
+    {t:'easy',  a:'輕鬆跑',      v:'基隆河步道',   km:'8km',str:'A2'},
+    {t:'hill', a:'間歇 5×1km', v:'陽明山小油坑', km:'10km',e:'↑700m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'8km',str:'B2'},
+    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'4km'},
+    {t:'long',  a:'長跑 含下坡', v:'陽明山大屯山', km:'18km',e:'↑1,000m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+  ]},
+  {w:7,ph:'p2',badge:'第二期 — 進展',km:52,elev:'1,900m',
+   focus:'VO₂max 強度最高週，雙日連跑模擬疲勞，A/B 皆不練到力竭',
+   days:[
+    {t:'easy', a:'輕鬆跑',       v:'基隆河步道',     km:'9km',str:'A2'},
+    {t:'hill', a:'爬坡節奏間歇', v:'陽明山七星山',   km:'10km',e:'↑800m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',       v:'住家附近',       km:'9km',str:'B2'},
+    {t:'easy', a:'疲勞腿輕跑',   v:'住家附近',       km:'4km'},
+    {t:'long', a:'長跑 模擬越野',v:'陽明山 七星+油坑',km:'20km',e:'↑1,100m'},
+    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
+  ]},
+  {w:8,ph:'rec',badge:'恢復週',km:28,elev:'~280m',elevEst:true,
+   focus:'第二期吸收期；肌力維持爆發力動作，降量專注落地品質',
+   days:[
+    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'A2↓'},
+    {t:'easy', a:'輕鬆跑',   v:'仙跡岩輕鬆段',km:'6km'},
+    {t:'rest', a:'全休',     v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'B2↓'},
+    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'2km'},
+    {t:'long', a:'輕鬆長跑', v:'陽明山二子坪',km:'8km'},
+    {t:'rest', a:'全休',     v:'輕伸展+按摩'},
+  ]},
+  {w:9,ph:'p3',badge:'第三期 — 強化',km:54,elev:'2,060m',
+   focus:'跑步回到 LT2 但全面越野化；肌力轉為肌耐力，B 加入 Box Step-down 保護下坡',
+   days:[
+    {t:'easy', a:'輕鬆跑',        v:'基隆河步道',     km:'8km',str:'A3'},
+    {t:'tempo',a:'越野節奏 4×3km',v:'目標賽道/仙跡岩',km:'12km',e:'↑860m'},
+    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'8km',str:'B3'},
+    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'4km'},
+    {t:'long', a:'越野長跑①',     v:'目標賽道/陽明山',km:'22km',e:'↑1,200m'},
+    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
+  ]},
+  {w:10,ph:'p3',badge:'第三期 — 強化',km:58,elev:'2,740m',elevPeak:true,
+   focus:'越野 LT2 強度最高週，最長單日爬升；肌耐力加入 Nordic Curl 與離心踏步強化下坡',
+   days:[
+    {t:'easy', a:'輕鬆跑',           v:'基隆河步道',  km:'10km',str:'A3'},
+    {t:'tempo',a:'越野長坡 LT2 3×8min',v:'目標賽道', km:'12km',e:'↑1,290m'},
+    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'10km',str:'B3'},
+    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'2km'},
+    {t:'long', a:'越野長跑②',        v:'目標賽道/陽明山',km:'24km',e:'↑1,450m'},
+    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
+  ]},
+  {w:11,ph:'p3',badge:'第三期 — 強化',km:60,elev:'1,600m',
+   focus:'峰值週：A/B 同步降容積保護長跑品質，全力備戰 26km 模擬配速越野長跑',
+   days:[
+    {t:'easy', a:'輕鬆跑',          v:'基隆河步道',   km:'8km',str:'A3↓'},
+    {t:'tempo',a:'越野節奏 持續30min',v:'平路或陽明山',km:'10km'},
+    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
+    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km',str:'B3↓'},
+    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km'},
+    {t:'long', a:'越野長跑③',       v:'目標賽道/高強度越野',km:'26km',e:'↑1,600m'},
+    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
+  ]},
+  {w:12,ph:'p4',badge:'第四期 — 減量',km:42,elev:'932m',
+   focus:'跑量開始下降，肌力轉為活化維持，不追重量',
+   days:[
+    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'8km', str:'A4'},
+    {t:'tempo', a:'節奏跑 3×2km', v:'仙跡岩',    km:'9km', e:'↑432m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km', str:'B4'},
+    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'3km'},
+    {t:'long',  a:'輕鬆長跑',     v:'陽明山二子坪',km:'14km',e:'↑500m'},
+    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
+  ]},
+  {w:13,ph:'p4',badge:'第四期 — 減量',km:26,elev:'~200m',elevEst:true,
+   focus:'大幅降量，活化肌力維持感覺，測試比賽日補給策略與裝備',
+   days:[
+    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'A4'},
+    {t:'tempo', a:'短間歇 4×400m', v:'平路操場',  km:'5km'},
+    {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
+    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'B4'},
+    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'3km'},
+    {t:'easy',  a:'輕鬆跑',        v:'仙跡岩輕鬆段',km:'8km'},
+    {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
+  ]},
+  {w:14,ph:'race',badge:'比賽週',km:40,elev:'1,500m+',
+   focus:'賽前不做肌力，週四週五全休，充足睡眠與補充碳水，信任 14 週的累積',
+   days:[
+    {t:'easy', a:'輕鬆 + 加速跑', v:'基隆河步道', km:'4km'},
+    {t:'easy', a:'活化輕鬆跑',    v:'住家附近',   km:'3km'},
+    {t:'easy', a:'輕鬆跑',        v:'住家附近',   km:'3km'},
+    {t:'rest', a:'全休',           v:'靜態伸展'},
+    {t:'rest', a:'全休',           v:'裝備確認'},
+    {t:'race', a:'🏆 比賽日！',    v:'目標越野賽', km:'30km',e:'↑1,500m+'},
+    {t:'rest', a:'恢復 + 慶祝',   v:''},
+  ]},
+];
+
+function buildDay(d){
+  const el = document.createElement('div');
+  el.className = `day dt-${d.t}`;
+  let h = `<div class="d-name">${d._dn}</div><div class="d-act">${d.a}</div>`;
+  if(d.v) h += `<div class="d-venue">${d.v}</div>`;
+  const st = [d.km, d.e].filter(Boolean).join(' ');
+  if(st) h += `<div class="d-stats">${st}</div>`;
+  if(d.str) h += `<div class="d-str ${strCls(d.str)}">${strLbl(d.str)}</div>`;
+  el.innerHTML = h;
+  return el;
+}
+
+function buildCard(w){
+  const cls = {p1:'ph-p1',p2:'ph-p2',p3:'ph-p3',p4:'ph-p4',rec:'ph-rec',race:'ph-race'}[w.ph]||'ph-rec';
+  const pct = Math.round(w.km/MAX_KM*100);
+  const c = document.createElement('div');
+  c.className = `wcard ${cls}`;
+  c.dataset.ph = w.ph;
+  const head = document.createElement('div');
+  head.className = 'wcard-head';
+  head.setAttribute('data-wnum', String(w.w).padStart(2,'0'));
+  head.innerHTML = `<span class="w-num">W${String(w.w).padStart(2,'0')}</span><span class="w-badge">${w.badge}</span><span class="w-focus">${w.focus}</span><span class="w-km">${w.km} km</span><div class="w-prog"><div class="w-prog-fill" style="width:${pct}%"></div></div>`;
+  c.appendChild(head);
+  const body = document.createElement('div');
+  body.className = 'wcard-body';
+  const grid = document.createElement('div');
+  grid.className = 'day-grid';
+  w.days.forEach((d,i) => { d._dn = DN[i]; grid.appendChild(buildDay(d)); });
+  body.appendChild(grid);
+  c.appendChild(body);
+  return c;
+}
+
+function renderWeeks(){
+  const list = document.getElementById('weekList');
+  weeks.forEach(w => list.appendChild(buildCard(w)));
+}
+
+let cur = 'all';
+function filterPhase(btn, ph){
+  cur = ph;
+  document.querySelectorAll('.ptab').forEach(b => b.className = 'ptab' + (b===btn ? ` a-${ph==='all'?'all':ph}` : ''));
+  document.querySelectorAll('.wcard').forEach(c => c.classList.toggle('hidden', ph!=='all' && c.dataset.ph!==ph));
+}
+
+renderWeeks();
+</script>
+</body>
+</html>
