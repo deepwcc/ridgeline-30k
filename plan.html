@@ -41,9 +41,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .phase-tabs{display:flex;gap:6px;flex-wrap:wrap;}
 .ptab{padding:6px 14px;border-radius:100px;border:1px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;background:var(--surface);color:var(--text-2);transition:all .15s;font-family:var(--fb);}
 .ptab:hover{background:var(--surface-2);}
-.ptab.a-all{background:var(--text-1);color:#fff;border-color:var(--text-1);} .ptab.a-p1{background:var(--amber);color:#fff;border-color:var(--amber);}
-.ptab.a-p2{background:var(--purple);color:#fff;border-color:var(--purple);} .ptab.a-p3{background:var(--teal);color:#fff;border-color:var(--teal);}
-.ptab.a-p4{background:var(--gray);color:#fff;border-color:var(--gray);}
+.ptab.a-all{background:var(--text-1);color:#fff;border-color:var(--text-1);} .ptab.a-b1{background:var(--amber);color:#fff;border-color:var(--amber);}
+.ptab.a-b2{background:var(--teal);color:#fff;border-color:var(--teal);} .ptab.a-b3{background:var(--purple);color:#fff;border-color:var(--purple);}
+.ptab.a-rec{background:var(--gray);color:#fff;border-color:var(--gray);} .ptab.a-taper{background:var(--blue);color:#fff;border-color:var(--blue);}
 .wk-struct{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:16px;}
 .ws-lbl{font-size:11px;color:var(--text-3);font-weight:500;margin-right:4px;}
 .ws-d{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;}
@@ -58,32 +58,44 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .dt-cell.h{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);}
 .dt-cell strong{display:block;color:var(--text-1);font-weight:600;}
 .phase-chip{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:4px;}
-.pc-p1{background:var(--amber-lt);color:#6B3F09;} .pc-p2{background:var(--purple-lt);color:#4A1257;}
-.pc-p3{background:var(--teal-lt);color:#063D2C;} .pc-p4{background:var(--gray-lt);color:#322F2B;}
-.elev-overview-table .dt-row{grid-template-columns:.7fr 1.3fr 1fr 1fr;}
-.elev-overview-table .dt-cell strong.peak{color:var(--red);}
-.elev-note{font-size:11px;color:var(--text-3);margin:-8px 0 20px;}
+.pc-b1{background:var(--amber-lt);color:#6B3F09;} .pc-b2{background:var(--teal-lt);color:#063D2C;}
+.pc-b3{background:var(--purple-lt);color:#4A1257;} .pc-rec{background:var(--gray-lt);color:#322F2B;}
+.pc-taper{background:var(--blue-lt);color:#0A3D78;} .pc-race{background:var(--race-lt);color:var(--race-red);}
+.plan-overview-table .dt-row{grid-template-columns:.45fr .7fr 1fr 1.5fr 1fr;}
+.plan-overview-table .dt-cell strong.peak{color:var(--green);}
+.session-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sess{border-radius:var(--r-sm);padding:10px 12px;cursor:pointer;transition:filter .12s;}
+.sess:hover{filter:brightness(.93);} .sess:active{filter:brightness(.86);}
+.s-label{font-family:var(--fm);font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}
+.s-sub{font-size:11px;font-weight:600;line-height:1.35;margin-bottom:4px;}
+.s-detail{font-family:var(--fm);font-size:10px;}
+.st-threshold{background:#FCEAF3;} .st-threshold .s-label,.st-threshold .s-sub{color:#6D1F45;} .st-threshold .s-detail{color:#8C2E5B;}
+.st-tempo{background:#E3EFFC;} .st-tempo .s-label,.st-tempo .s-sub{color:#0A3D78;} .st-tempo .s-detail{color:#185FA5;}
+.st-interval{background:#F0E5FC;} .st-interval .s-label,.st-interval .s-sub{color:#4A1257;} .st-interval .s-detail{color:#6B1F7A;}
+.st-long{background:#FDF1E1;} .st-long .s-label,.st-long .s-sub{color:#6B3F09;} .st-long .s-detail{color:#B5720A;}
+.st-rest{background:#ECEAE4;} .st-rest .s-label,.st-rest .s-sub{color:#504C47;} .st-rest .s-detail{color:#928E88;}
+.st-race{background:#FDDBDF;} .st-race .s-label,.st-race .s-sub{color:#7A1225;} .st-race .s-detail{color:#C0213B;}
 .week-list{display:flex;flex-direction:column;gap:10px;}
 .wcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;border-left:4px solid var(--border);transition:box-shadow .15s;}
 .wcard:hover{box-shadow:0 2px 16px rgba(0,0,0,.07);}
-.wcard.ph-p1{border-left-color:var(--amber);} .wcard.ph-p2{border-left-color:var(--purple);}
-.wcard.ph-p3{border-left-color:var(--teal);} .wcard.ph-p4{border-left-color:var(--gray);}
-.wcard.ph-rec{border-left-color:var(--text-3);} .wcard.ph-race{border-left-color:var(--race-red);}
+.wcard.ph-b1{border-left-color:var(--amber);} .wcard.ph-b2{border-left-color:var(--teal);}
+.wcard.ph-b3{border-left-color:var(--purple);} .wcard.ph-rec{border-left-color:var(--text-3);}
+.wcard.ph-taper{border-left-color:var(--blue);} .wcard.ph-race{border-left-color:var(--race-red);}
 .wcard.hidden{display:none;}
 .wcard-head{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
 .wcard-head::after{content:attr(data-wnum);position:absolute;right:80px;top:50%;transform:translateY(-50%);font-family:var(--fm);font-size:52px;font-weight:700;color:var(--border);opacity:.6;pointer-events:none;letter-spacing:-.04em;line-height:1;}
 .w-num{font-family:var(--fm);font-size:11px;font-weight:700;color:var(--text-3);letter-spacing:.04em;flex-shrink:0;}
 .w-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.04em;flex-shrink:0;}
-.ph-p1 .w-badge{background:var(--amber-lt);color:#6B3F09;} .ph-p2 .w-badge{background:var(--purple-lt);color:#4A1257;}
-.ph-p3 .w-badge{background:var(--teal-lt);color:#063D2C;} .ph-p4 .w-badge{background:var(--gray-lt);color:#322F2B;}
-.ph-rec .w-badge{background:var(--surface-2);color:var(--text-2);} .ph-race .w-badge{background:var(--race-lt);color:var(--race-red);}
+.ph-b1 .w-badge{background:var(--amber-lt);color:#6B3F09;} .ph-b2 .w-badge{background:var(--teal-lt);color:#063D2C;}
+.ph-b3 .w-badge{background:var(--purple-lt);color:#4A1257;} .ph-rec .w-badge{background:var(--surface-2);color:var(--text-2);}
+.ph-taper .w-badge{background:var(--blue-lt);color:#0A3D78;} .ph-race .w-badge{background:var(--race-lt);color:var(--race-red);}
 .w-focus{flex:1;font-size:11px;color:var(--text-2);font-style:italic;min-width:0;}
 .w-km{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--text-1);flex-shrink:0;z-index:1;}
 .w-prog{height:2px;background:var(--border);position:absolute;bottom:0;left:0;right:0;}
 .w-prog-fill{height:100%;}
-.ph-p1 .w-prog-fill{background:var(--amber);} .ph-p2 .w-prog-fill{background:var(--purple);}
-.ph-p3 .w-prog-fill{background:var(--teal);} .ph-p4 .w-prog-fill{background:var(--gray);}
-.ph-rec .w-prog-fill{background:var(--text-3);} .ph-race .w-prog-fill{background:var(--race-red);}
+.ph-b1 .w-prog-fill{background:var(--amber);} .ph-b2 .w-prog-fill{background:var(--teal);}
+.ph-b3 .w-prog-fill{background:var(--purple);} .ph-rec .w-prog-fill{background:var(--text-3);}
+.ph-taper .w-prog-fill{background:var(--blue);} .ph-race .w-prog-fill{background:var(--race-red);}
 .wcard-body{padding:10px 18px 14px;}
 .day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
 .day{border-radius:var(--r-sm);padding:6px 6px 7px;min-height:88px;display:flex;flex-direction:column;cursor:pointer;transition:filter .12s;}
@@ -100,6 +112,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .dt-long{background:#FDF1E1;} .dt-long .d-name{color:#B5720A;} .dt-long .d-act,.dt-long .d-venue{color:#6B3F09;} .dt-long .d-stats{color:#B5720A;}
 .dt-hill{background:#FCEAF3;} .dt-hill .d-name{color:#8C2E5B;} .dt-hill .d-act,.dt-hill .d-venue{color:#6D1F45;} .dt-hill .d-stats{color:#8C2E5B;}
 .dt-race{background:#FDDBDF;} .dt-race .d-name{color:#C0213B;} .dt-race .d-act,.dt-race .d-venue{color:#7A1225;} .dt-race .d-stats{color:#C0213B;}
+.dt-threshold{background:#FCEAF3;} .dt-threshold .d-name{color:#8C2E5B;} .dt-threshold .d-act,.dt-threshold .d-venue{color:#6D1F45;}
+.dt-interval{background:#F0E5FC;} .dt-interval .d-name{color:#6B1F7A;} .dt-interval .d-act,.dt-interval .d-venue{color:#4A1257;}
 .str-p1{background:#FDE8D0;color:#7C3B0A;} .str-p2{background:#F0E5FC;color:#6B1F7A;}
 .str-p3{background:#DDF8EF;color:#0B6046;} .str-p4{background:#ECEAE4;color:#504C47;}
 footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;font-size:12px;color:var(--text-3);max-width:1160px;margin:0 auto;}
@@ -157,47 +171,45 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
       <h2 class="sec-title">14 週訓練課表</h2>
       <div class="phase-tabs">
         <button class="ptab a-all" onclick="filterPhase(this,'all')">全部</button>
-        <button class="ptab" onclick="filterPhase(this,'p1')">第一期 基礎</button>
-        <button class="ptab" onclick="filterPhase(this,'p2')">第二期 進展</button>
-        <button class="ptab" onclick="filterPhase(this,'p3')">第三期 強化</button>
-        <button class="ptab" onclick="filterPhase(this,'p4')">第四期 減量</button>
+        <button class="ptab" onclick="filterPhase(this,'b1')">基礎期</button>
+        <button class="ptab" onclick="filterPhase(this,'b2')">強化期</button>
+        <button class="ptab" onclick="filterPhase(this,'b3')">巔峰期</button>
+        <button class="ptab" onclick="filterPhase(this,'rec')">減量</button>
       </div>
     </div>
     <div class="wk-struct">
-      <span class="ws-lbl">每週固定結構</span>
-      <span class="ws-d easy">一 輕鬆 + 肌力A（維持）</span>
-      <span class="ws-d key">二 關鍵課表</span>
-      <span class="ws-d rest">三 全休</span>
-      <span class="ws-d easy">四 輕鬆 + 肌力B（主要）</span>
-      <span class="ws-d short">五 輕鬆 / 交叉訓練</span>
-      <span class="ws-d long">六 長跑</span>
-      <span class="ws-d rest">日 全休</span>
+      <span class="ws-lbl">每週關鍵課表</span>
+      <span class="ws-d key">Key1 上坡閾值</span>
+      <span class="ws-d key">Key2 平路</span>
+      <span class="ws-d long">Long Run 山路</span>
+      <span class="ws-d easy">輕鬆恢復跑</span>
+      <span class="ws-d rest">休息日</span>
     </div>
 
-    <div class="sub-title">週爬升總覽（里程 + D+）</div>
-    <div class="data-table elev-overview-table">
+    <div class="sub-title">14 週課表總覽</div>
+    <div class="data-table plan-overview-table">
       <div class="dt-row hdr">
         <div class="dt-cell h">週</div>
-        <div class="dt-cell h">週期</div>
-        <div class="dt-cell h">週總里程</div>
-        <div class="dt-cell h">週總爬升 D+</div>
+        <div class="dt-cell h">階段</div>
+        <div class="dt-cell h">Key1 上坡閾值</div>
+        <div class="dt-cell h">Key2 平路</div>
+        <div class="dt-cell h">Long Run</div>
       </div>
-      <div class="dt-row"><div class="dt-cell">W1</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">32km</div><div class="dt-cell">400m</div></div>
-      <div class="dt-row"><div class="dt-cell">W2</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">36km</div><div class="dt-cell">600m</div></div>
-      <div class="dt-row"><div class="dt-cell">W3</div><div class="dt-cell"><span class="phase-chip pc-p1">第一期 基礎</span></div><div class="dt-cell">40km</div><div class="dt-cell">750m</div></div>
-      <div class="dt-row"><div class="dt-cell">W4</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">25km</div><div class="dt-cell">~280m*</div></div>
-      <div class="dt-row"><div class="dt-cell">W5</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">44km</div><div class="dt-cell"><strong>2,052m</strong></div></div>
-      <div class="dt-row"><div class="dt-cell">W6</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">48km</div><div class="dt-cell">1,700m</div></div>
-      <div class="dt-row"><div class="dt-cell">W7</div><div class="dt-cell"><span class="phase-chip pc-p2">第二期 進展</span></div><div class="dt-cell">52km</div><div class="dt-cell">1,900m</div></div>
-      <div class="dt-row"><div class="dt-cell">W8</div><div class="dt-cell"><span class="phase-chip pc-p4">恢復週</span></div><div class="dt-cell">28km</div><div class="dt-cell">~280m*</div></div>
-      <div class="dt-row"><div class="dt-cell">W9</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">54km</div><div class="dt-cell">2,060m</div></div>
-      <div class="dt-row"><div class="dt-cell">W10</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">58km</div><div class="dt-cell"><strong class="peak">2,740m（全期最高）</strong></div></div>
-      <div class="dt-row"><div class="dt-cell">W11</div><div class="dt-cell"><span class="phase-chip pc-p3">第三期 強化</span></div><div class="dt-cell">60km</div><div class="dt-cell">1,600m</div></div>
-      <div class="dt-row"><div class="dt-cell">W12</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">42km</div><div class="dt-cell">932m</div></div>
-      <div class="dt-row"><div class="dt-cell">W13</div><div class="dt-cell"><span class="phase-chip pc-p4">第四期 減量</span></div><div class="dt-cell">26km</div><div class="dt-cell">~200m*</div></div>
-      <div class="dt-row"><div class="dt-cell">W14</div><div class="dt-cell"><span class="phase-chip pc-p4">比賽週</span></div><div class="dt-cell">40km</div><div class="dt-cell">1,500m+（比賽）</div></div>
+      <div class="dt-row"><div class="dt-cell">W1</div><div class="dt-cell"><span class="phase-chip pc-b1">基礎期</span></div><div class="dt-cell">20min</div><div class="dt-cell">8K @ MP+20s</div><div class="dt-cell">90min</div></div>
+      <div class="dt-row"><div class="dt-cell">W2</div><div class="dt-cell"><span class="phase-chip pc-b1">基礎期</span></div><div class="dt-cell">20min</div><div class="dt-cell">9K @ MP+20s</div><div class="dt-cell">105min</div></div>
+      <div class="dt-row"><div class="dt-cell">W3</div><div class="dt-cell"><span class="phase-chip pc-b1">基礎期</span></div><div class="dt-cell">30min</div><div class="dt-cell">10K @ MP+20s</div><div class="dt-cell">120min</div></div>
+      <div class="dt-row"><div class="dt-cell">W4</div><div class="dt-cell"><span class="phase-chip pc-rec">減量</span></div><div class="dt-cell">20min（輕）</div><div class="dt-cell">12K @ MP+30s</div><div class="dt-cell">70min</div></div>
+      <div class="dt-row"><div class="dt-cell">W5</div><div class="dt-cell"><span class="phase-chip pc-b2">強化期</span></div><div class="dt-cell">30min</div><div class="dt-cell">14K @ MP+30s</div><div class="dt-cell">130min</div></div>
+      <div class="dt-row"><div class="dt-cell">W6</div><div class="dt-cell"><span class="phase-chip pc-b2">強化期</span></div><div class="dt-cell">40min</div><div class="dt-cell">16K @ MP+30s</div><div class="dt-cell">145min</div></div>
+      <div class="dt-row"><div class="dt-cell">W7</div><div class="dt-cell"><span class="phase-chip pc-b2">強化期</span></div><div class="dt-cell">40min（持平）</div><div class="dt-cell">400m × 14 @ 5K配速</div><div class="dt-cell">160min</div></div>
+      <div class="dt-row"><div class="dt-cell">W8</div><div class="dt-cell"><span class="phase-chip pc-rec">減量</span></div><div class="dt-cell">20min（輕）</div><div class="dt-cell">400m × 16 @ 5K配速</div><div class="dt-cell">85min</div></div>
+      <div class="dt-row"><div class="dt-cell">W9</div><div class="dt-cell"><span class="phase-chip pc-b3">巔峰期</span></div><div class="dt-cell">40min</div><div class="dt-cell">400m × 18 @ 5K配速</div><div class="dt-cell">165min</div></div>
+      <div class="dt-row"><div class="dt-cell">W10</div><div class="dt-cell"><span class="phase-chip pc-b3">巔峰期</span></div><div class="dt-cell">40min（持平）</div><div class="dt-cell">400m × 20 @ 5K配速</div><div class="dt-cell">175min</div></div>
+      <div class="dt-row"><div class="dt-cell">W11</div><div class="dt-cell"><span class="phase-chip pc-b3">巔峰期</span></div><div class="dt-cell">50min</div><div class="dt-cell">800m × 6 @ 10K配速</div><div class="dt-cell"><strong class="peak">180min</strong></div></div>
+      <div class="dt-row"><div class="dt-cell">W12</div><div class="dt-cell"><span class="phase-chip pc-rec">減量</span></div><div class="dt-cell">20min（輕）</div><div class="dt-cell">800m × 8 @ 10K配速</div><div class="dt-cell">100min</div></div>
+      <div class="dt-row"><div class="dt-cell">W13</div><div class="dt-cell"><span class="phase-chip pc-taper">賽前減量</span></div><div class="dt-cell">20min</div><div class="dt-cell">800m × 10 @ 10K配速</div><div class="dt-cell">120min（含配速段）</div></div>
+      <div class="dt-row"><div class="dt-cell">W14</div><div class="dt-cell"><span class="phase-chip pc-race">比賽週</span></div><div class="dt-cell">—</div><div class="dt-cell">800m × 6 @ 5K配速</div><div class="dt-cell"><strong class="peak">🏆 比賽日 30K</strong></div></div>
     </div>
-    <p class="elev-note">* W4／W8／W13 原始課表未標記爬升，依路線典型值（陽明山二子坪／仙跡岩輕鬆段）估算，建議以實際 GPS 記錄校正。</p>
 
     <div class="week-list" id="weekList"></div>
   </section>
@@ -217,234 +229,26 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
   </div>
 </div>
 
-<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.3.0</span></footer>
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.4.0</span></footer>
 
 <script>
-const DN = ['一','二','三','四','五','六','日'];
-const MAX_KM = 60;
-
-function strCls(s){
-  if(!s) return '';
-  const num = s.slice(-1);
-  return `str-p${num}`;
-}
-function strLbl(s){
-  if(!s) return '';
-  const reduced = s.includes('↓');
-  const role = s.startsWith('A') ? '維持' : '主要';
-  return role + (reduced ? ' ↓' : '');
-}
-
-const weeks = [
-  {w:1,ph:'p1',badge:'第一期 — 基礎',km:32,elev:'400m',
-   focus:'公路 LT2 節奏跑建立有氧基底（段落式 3×8min）；肌力進入最大肌力期，A 維持劑量保護隔天課表',
-   days:[
-    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km', str:'A1'},
-    {t:'tempo',a:'節奏跑 3×8min',  v:'基隆河步道',  km:'8km'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'5km',str:'B1'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
-    {t:'long', a:'長跑 平緩越野',  v:'陽明山冷水坑',km:'12km',e:'↑400m'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-  ]},
-  {w:2,ph:'p1',badge:'第一期 — 基礎',km:36,elev:'600m',
-   focus:'節奏跑段落拉長至 3×10min；最大肌力確認動作品質後開始漸進重量',
-   days:[
-    {t:'easy', a:'輕鬆跑 + 核心',  v:'基隆河步道',  km:'6km',str:'A1'},
-    {t:'tempo',a:'節奏跑 3×10min', v:'基隆河步道',  km:'8km'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'6km',str:'B1'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'3km'},
-    {t:'long', a:'長跑 緩坡越野',  v:'陽明山竹子湖',km:'14km',e:'↑600m'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-  ]},
-  {w:3,ph:'p1',badge:'第一期 — 基礎',km:40,elev:'750m',
-   focus:'首次連續節奏跑 25min；感受穩定維持 LT2 強度的節奏，肌力漸進加重',
-   days:[
-    {t:'easy', a:'輕鬆跑',         v:'基隆河步道',  km:'7km',str:'A1'},
-    {t:'tempo',a:'節奏跑 持續 25min',v:'基隆河步道',km:'8km'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'7km',str:'B1'},
-    {t:'easy', a:'輕鬆跑',         v:'住家附近',    km:'2km'},
-    {t:'long', a:'長跑 含爬升',    v:'陽明山面天山',km:'16km',e:'↑750m'},
-    {t:'rest', a:'全休',            v:'輕伸展+按摩'},
-  ]},
-  {w:4,ph:'rec',badge:'恢復週',km:25,elev:'~280m',elevEst:true,
-   focus:'降量 40%；肌力維持輕量確保動作模式，讓第一期適應充分吸收',
-   days:[
-    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'6km',str:'A1↓'},
-    {t:'easy', a:'輕鬆跑',  v:'仙跡岩輕鬆段',km:'5km'},
-    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'5km',str:'B1↓'},
-    {t:'easy', a:'輕鬆跑',  v:'住家附近',    km:'2km'},
-    {t:'long', a:'輕鬆長跑',v:'陽明山二子坪',km:'7km'},
-    {t:'rest', a:'全休',    v:'輕伸展+按摩'},
-  ]},
-  {w:5,ph:'p2',badge:'第二期 — 進展',km:44,elev:'2,052m',
-   focus:'跑步轉向坡道 VO₂max 刺激；肌力轉為爆發力，B 加入跳箱與落地控制',
-   days:[
-    {t:'easy', a:'輕鬆跑 + 核心',v:'基隆河步道',  km:'7km',str:'A2'},
-    {t:'hill', a:'爬坡重複×8',   v:'仙跡岩',      km:'8km',e:'↑1,152m'},
-    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'7km',str:'B2'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',    km:'4km'},
-    {t:'long', a:'長跑 越野',    v:'陽明山七星山',km:'18km',e:'↑900m'},
-    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
-  ]},
-  {w:6,ph:'p2',badge:'第二期 — 進展',km:48,elev:'1,700m',
-   focus:'山路間歇引入更多下坡段，爆發力肌力加入落地緩衝訓練神經肌肉控制',
-   days:[
-    {t:'easy',  a:'輕鬆跑',      v:'基隆河步道',   km:'8km',str:'A2'},
-    {t:'hill', a:'間歇 5×1km', v:'陽明山小油坑', km:'10km',e:'↑700m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'8km',str:'B2'},
-    {t:'easy',  a:'輕鬆跑',      v:'住家附近',     km:'4km'},
-    {t:'long',  a:'長跑 含下坡', v:'陽明山大屯山', km:'18km',e:'↑1,000m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-  ]},
-  {w:7,ph:'p2',badge:'第二期 — 進展',km:52,elev:'1,900m',
-   focus:'VO₂max 強度最高週，雙日連跑模擬疲勞，A/B 皆不練到力竭',
-   days:[
-    {t:'easy', a:'輕鬆跑',       v:'基隆河步道',     km:'9km',str:'A2'},
-    {t:'hill', a:'爬坡節奏間歇', v:'陽明山七星山',   km:'10km',e:'↑800m'},
-    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',       v:'住家附近',       km:'9km',str:'B2'},
-    {t:'easy', a:'疲勞腿輕跑',   v:'住家附近',       km:'4km'},
-    {t:'long', a:'長跑 模擬越野',v:'陽明山 七星+油坑',km:'20km',e:'↑1,100m'},
-    {t:'rest', a:'全休',          v:'輕伸展+按摩'},
-  ]},
-  {w:8,ph:'rec',badge:'恢復週',km:28,elev:'~280m',elevEst:true,
-   focus:'第二期吸收期；肌力維持爆發力動作，降量專注落地品質',
-   days:[
-    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'A2↓'},
-    {t:'easy', a:'輕鬆跑',   v:'仙跡岩輕鬆段',km:'6km'},
-    {t:'rest', a:'全休',     v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'6km',str:'B2↓'},
-    {t:'easy', a:'輕鬆跑',   v:'住家附近',    km:'2km'},
-    {t:'long', a:'輕鬆長跑', v:'陽明山二子坪',km:'8km'},
-    {t:'rest', a:'全休',     v:'輕伸展+按摩'},
-  ]},
-  {w:9,ph:'p3',badge:'第三期 — 強化',km:54,elev:'2,060m',
-   focus:'跑步回到 LT2 但全面越野化；肌力轉為肌耐力，B 加入 Box Step-down 保護下坡',
-   days:[
-    {t:'easy', a:'輕鬆跑',        v:'基隆河步道',     km:'8km',str:'A3'},
-    {t:'tempo',a:'越野節奏 4×3km',v:'目標賽道/仙跡岩',km:'12km',e:'↑860m'},
-    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'8km',str:'B3'},
-    {t:'easy', a:'輕鬆跑',        v:'住家附近',       km:'4km'},
-    {t:'long', a:'越野長跑①',     v:'目標賽道/陽明山',km:'22km',e:'↑1,200m'},
-    {t:'rest', a:'全休',           v:'輕伸展+按摩'},
-  ]},
-  {w:10,ph:'p3',badge:'第三期 — 強化',km:58,elev:'2,740m',elevPeak:true,
-   focus:'越野 LT2 強度最高週，最長單日爬升；肌耐力加入 Nordic Curl 與離心踏步強化下坡',
-   days:[
-    {t:'easy', a:'輕鬆跑',           v:'基隆河步道',  km:'10km',str:'A3'},
-    {t:'tempo',a:'越野長坡 LT2 3×8min',v:'目標賽道', km:'12km',e:'↑1,290m'},
-    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'10km',str:'B3'},
-    {t:'easy', a:'輕鬆跑',           v:'住家附近',    km:'2km'},
-    {t:'long', a:'越野長跑②',        v:'目標賽道/陽明山',km:'24km',e:'↑1,450m'},
-    {t:'rest', a:'全休',              v:'輕伸展+按摩'},
-  ]},
-  {w:11,ph:'p3',badge:'第三期 — 強化',km:60,elev:'1,600m',
-   focus:'峰值週：A/B 同步降容積保護長跑品質，全力備戰 26km 模擬配速越野長跑',
-   days:[
-    {t:'easy', a:'輕鬆跑',          v:'基隆河步道',   km:'8km',str:'A3↓'},
-    {t:'tempo',a:'越野節奏 持續30min',v:'平路或陽明山',km:'10km'},
-    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
-    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km',str:'B3↓'},
-    {t:'easy', a:'輕鬆跑',          v:'住家附近',     km:'8km'},
-    {t:'long', a:'越野長跑③',       v:'目標賽道/高強度越野',km:'26km',e:'↑1,600m'},
-    {t:'rest', a:'全休',             v:'輕伸展+按摩'},
-  ]},
-  {w:12,ph:'p4',badge:'第四期 — 減量',km:42,elev:'932m',
-   focus:'跑量開始下降，肌力轉為活化維持，不追重量',
-   days:[
-    {t:'easy',  a:'輕鬆跑',       v:'基隆河步道',km:'8km', str:'A4'},
-    {t:'tempo', a:'節奏跑 3×2km', v:'仙跡岩',    km:'9km', e:'↑432m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'8km', str:'B4'},
-    {t:'easy',  a:'輕鬆跑',       v:'住家附近',  km:'3km'},
-    {t:'long',  a:'輕鬆長跑',     v:'陽明山二子坪',km:'14km',e:'↑500m'},
-    {t:'rest',  a:'全休',         v:'輕伸展+按摩'},
-  ]},
-  {w:13,ph:'p4',badge:'第四期 — 減量',km:26,elev:'~200m',elevEst:true,
-   focus:'大幅降量，活化肌力維持感覺，測試比賽日補給策略與裝備',
-   days:[
-    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'A4'},
-    {t:'tempo', a:'短間歇 4×400m', v:'平路操場',  km:'5km'},
-    {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
-    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'5km', str:'B4'},
-    {t:'easy',  a:'輕鬆跑',        v:'住家附近',  km:'3km'},
-    {t:'easy',  a:'輕鬆跑',        v:'仙跡岩輕鬆段',km:'8km'},
-    {t:'rest',  a:'全休',          v:'輕伸展+按摩'},
-  ]},
-  {w:14,ph:'race',badge:'比賽週',km:40,elev:'1,500m+',
-   focus:'賽前不做肌力，週四週五全休，充足睡眠與補充碳水，信任 14 週的累積',
-   days:[
-    {t:'easy', a:'輕鬆 + 加速跑', v:'基隆河步道', km:'4km'},
-    {t:'easy', a:'活化輕鬆跑',    v:'住家附近',   km:'3km'},
-    {t:'easy', a:'輕鬆跑',        v:'住家附近',   km:'3km'},
-    {t:'rest', a:'全休',           v:'靜態伸展'},
-    {t:'rest', a:'全休',           v:'裝備確認'},
-    {t:'race', a:'🏆 比賽日！',    v:'目標越野賽', km:'30km',e:'↑1,500m+'},
-    {t:'rest', a:'恢復 + 慶祝',   v:''},
-  ]},
-];
-
-function buildDay(d){
-  const el = document.createElement('div');
-  el.className = `day dt-${d.t}`;
-  el.onclick = () => openDetail(d);
-  let h = `<div class="d-name">${d._dn}</div><div class="d-act">${d.a}</div>`;
-  if(d.v) h += `<div class="d-venue">${d.v}</div>`;
-  const st = [d.km, d.e].filter(Boolean).join(' ');
-  if(st) h += `<div class="d-stats">${st}</div>`;
-  if(d.str) h += `<div class="d-str ${strCls(d.str)}">${strLbl(d.str)}</div>`;
-  el.innerHTML = h;
-  return el;
-}
-
-function buildCard(w){
-  const cls = {p1:'ph-p1',p2:'ph-p2',p3:'ph-p3',p4:'ph-p4',rec:'ph-rec',race:'ph-race'}[w.ph]||'ph-rec';
-  const pct = Math.round(w.km/MAX_KM*100);
-  const c = document.createElement('div');
-  c.className = `wcard ${cls}`;
-  c.dataset.ph = w.ph;
-  const head = document.createElement('div');
-  head.className = 'wcard-head';
-  head.setAttribute('data-wnum', String(w.w).padStart(2,'0'));
-  head.innerHTML = `<span class="w-num">W${String(w.w).padStart(2,'0')}</span><span class="w-badge">${w.badge}</span><span class="w-focus">${w.focus}</span><span class="w-km">${w.km} km</span><div class="w-prog"><div class="w-prog-fill" style="width:${pct}%"></div></div>`;
-  c.appendChild(head);
-  const body = document.createElement('div');
-  body.className = 'wcard-body';
-  const grid = document.createElement('div');
-  grid.className = 'day-grid';
-  w.days.forEach((d,i) => { d._dn = DN[i]; d._w = w.w; grid.appendChild(buildDay(d)); });
-  body.appendChild(grid);
-  c.appendChild(body);
-  return c;
-}
-
-function renderWeeks(){
-  const list = document.getElementById('weekList');
-  weeks.forEach(w => list.appendChild(buildCard(w)));
-}
-
 // ── Workout categories ──
 const CATS = {
+  threshold:{label:'上坡閾值',bg:'#FCEAF3',fg:'#6D1F45',rpe:'6–7',hr:'Z3 · 80–87%',
+    desc:'以可控的閾值強度持續爬坡，提升爬坡效率與肌耐力，是越野跑最關鍵的專項課表。',
+    tips:['上坡以努力程度為主，不看配速','全程保持可說短句的強度（RPE 6–7）','下坡段慢走恢復，不要跑回起點','開頭 5 分鐘先暖身，不要一上坡就全力']},
+  tempo:{label:'配速跑',bg:'#E3EFFC',fg:'#0A3D78',rpe:'6–7',hr:'Z3 · 80–87%',
+    desc:'以馬拉松配速（MP）或略慢節奏持續跑，培養長時間維持穩定輸出的能力。',
+    tips:['前 1–2km 稍慢暖身，之後才進入目標配速','感覺「舒服地難」，說話只能說短句','後段掉速超過 10s/km 是強度過高的信號','MP+20/30s 是訓練區間，不是硬要跑到 MP']},
+  interval:{label:'間歇跑',bg:'#F0E5FC',fg:'#4A1257',rpe:'8–9',hr:'Z4–Z5 · 88–95%',
+    desc:'短距離高強度重複訓練，提升 VO₂max 與跑步經濟性，建立速度儲備。',
+    tips:['每組以目標配速穩定完成，不是全力衝刺','組間恢復至 RPE 3–4（約 90s–2min 慢走）','後段若掉速超過 5s/km，縮短組數不要硬撐','賽前降量週組數雖多，但每組輕鬆完成即可']},
+  long:{label:'長跑',bg:'#FDF1E1',fg:'#6B3F09',rpe:'4–5 / 陡坡 7–8',hr:'Z1–Z2，陡坡不超過 85%',
+    desc:'時間導向的山路長跑，累積爬升適應與脂肪燃燒效率。完成比速度重要。',
+    tips:['開頭 30 分鐘刻意偏慢，暖開再說','陡坡全部改 Power Hike（快走），抵頂才恢復跑','補給每 40–50 分鐘補一次，不要等餓了才補','最後 20% 若還有力，才可以稍微加速']},
   easy:{label:'輕鬆跑',bg:'#E8F3DA',fg:'#1E4007',rpe:'4–5',hr:'Z1–Z2 · 65–75%',
     desc:'有氧基底訓練，全程維持對話配速。完成比速度重要，是所有高強度課表的基礎。',
-    tips:['保持能完整說話的配速，不因路感好而加速','越野段落以時間為準，不看每公里配速','陡坡改快走，心率降回 Z2 再恢復跑步','下坡放鬆，不要衝刺']},
-  tempo:{label:'節奏跑',bg:'#E3EFFC',fg:'#0A3D78',rpe:'6–7',hr:'Z3 · 80–87%',
-    desc:'乳酸閾值訓練（LT2）。感覺「舒服地難」，說話只能說短句。最有效提升有氧閾值的課表。',
-    tips:['每段開頭刻意慢一點，不要第一分鐘就全力','段落結束恢復至 RPE 3–4 後再開始下一段','越野節奏跑以努力程度為準，不看平路配速','後段掉速是強度過高的信號，下次降低']},
-  hill:{label:'間歇跑',bg:'#FCEAF3',fg:'#6D1F45',rpe:'8–9',hr:'Z4–Z5 · 88–95%',
-    desc:'VO₂max 刺激訓練。爬坡重複或山路間歇，幾乎無法說話。提升最大攝氧量與神經肌肉效率。',
-    tips:['每組以最大可持續努力衝坡，不是短跑衝刺','下坡走回起點作為恢復，不要跑回去','最後一組品質應與第一組接近，若掉太多就縮短組數','有意識練習下坡落地控制，減少制動力']},
-  long:{label:'長跑',bg:'#FDF1E1',fg:'#6B3F09',rpe:'4–5 / 陡坡 7–8',hr:'Z1–Z2，陡坡不超過 85%',
-    desc:'累積爬升適應與脂肪燃燒效率。後段能否維持節奏是關鍵，全程完成比配速重要。',
-    tips:['開頭 30 分鐘刻意偏慢，暖開再說','陡坡全部改 Power Hike（快走），抵頂才恢復跑','補給每 40–50 分鐘補一次，不要等餓了才補','最後 20% 若還有力，才可以稍微加速']},
+    tips:['保持能完整說話的配速','越野段落以時間為準，不看每公里配速','陡坡改快走，心率降回 Z2 再恢復跑步','下坡放鬆，不要衝刺']},
   rest:{label:'休息日',bg:'#ECEAE4',fg:'#504C47',rpe:null,hr:null,
     desc:'主動恢復或完全休息。適應發生在休息時，訓練刺激後的恢復同樣是訓練的一部分。',
     tips:['輕度步行或伸展 20–30 分鐘可促進血液循環','避免因感覺好而額外加練','睡眠是最強的恢復工具，確保 7–9 小時','可安排按摩、滾筒或冷熱水交替浴']},
@@ -453,42 +257,150 @@ const CATS = {
     tips:['前 10km 刻意壓住，感覺「太慢」才對','所有陡坡改 Power Hike，保住心率跑好後半段','補給按計畫執行，每個補給站都喝水','最後 5km 才開始加速，全力留在終點線']}
 };
 
-// ── Strength sessions (matches strength.html) ──
-const STR = {
-  A1:{role:'Session A · 維持劑量',phase:'第一期 · 最大肌力',dose:'70–75% 1RM · RIR 3–4 · 2–3 組×5–6 下',
-    moves:['深蹲','臀橋','站姿提踵','平板 / Bird Dog'],
-    note:'離心節奏正常，功能是不干擾隔天關鍵課表'},
-  B1:{role:'Session B · 主要劑量',phase:'第一期 · 最大肌力',dose:'80–85% 1RM · RIR 1–2 · 4 組×4–6 下',
-    moves:['保加利亞分腿蹲','RDL（離心 2–3 秒）','Nordic Curl','側平板'],
-    note:'離心刻意放慢至 2–3 秒；完成後感覺「練過」而非「練爆」'},
-  A2:{role:'Session A · 維持劑量',phase:'第二期 · 爆發力',dose:'50–55% 1RM · RIR 4+ · 2 組×8 下',
-    moves:['深蹲（維持基礎）','臀橋','平板'],
-    note:'此期 A 維持動作模式，不更換動作，不追重量'},
-  B2:{role:'Session B · 主要劑量',phase:'第二期 · 爆發力',dose:'60–65% 1RM · RIR 3 · 3 組×6–8 下',
-    moves:['跳箱 / 深蹲跳','側向跳躍','分腿蹲（向心求快）','Nordic Curl','落地控制練習'],
-    note:'向心求快，離心不刻意放慢；爆發力訓練不應到力竭'},
-  A3:{role:'Session A · 維持劑量',phase:'第三期 · 肌耐力',dose:'25–30% 1RM · RIR 4+ · 2 組×12–15 下',
-    moves:['深蹲','臀橋','站姿提踵','平板（高反覆）'],
-    note:'高次數輕量，維持動作品質，感受肌肉持續用力即可'},
-  B3:{role:'Session B · 主要劑量',phase:'第三期 · 肌耐力',dose:'30–40% 1RM · RIR 2–3 · 3 組×15–20 下',
-    moves:['分腿蹲','RDL','Nordic Curl','Box Step-down 離心踏步','側平板'],
-    note:'Box Step-down 離心 2–3 秒，強化下坡煞車肌群'},
-  A4:{role:'Session A · 維持劑量',phase:'第四期 · 活化',dose:'極輕 · RIR 5+ · 1 組×10 下',
-    moves:['深蹲（徒手）','臀橋（徒手）','平板'],
-    note:'減量週，維持神經肌肉感覺，不追任何強度'},
-  B4:{role:'Session B · 主要劑量',phase:'第四期 · 活化',dose:'輕量 · RIR 4+ · 1–2 組×10 下',
-    moves:['分腿蹲（徒手）','RDL（輕量）','側平板'],
-    note:'賽前大幅降量，感覺肌肉有動到即可，不做到疲勞'}
-};
+// ── Weeks data ──
+const weeks = [
+  {w:1,ph:'b1',badge:'基礎期',focus:'上坡閾值 20min 建立爬坡節奏；8K 配速跑熟悉 MP+20s 感覺',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'20min 持續'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',  detail:'8K @ MP+20s'},
+    {t:'long',     label:'Long',sub:'山路長跑',detail:'90min'},
+  ]},
+  {w:2,ph:'b1',badge:'基礎期',focus:'配速跑拉長至 9K；長跑 105min 累積山路有氧底',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'20min 持續'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',  detail:'9K @ MP+20s'},
+    {t:'long',     label:'Long',sub:'山路長跑',detail:'105min'},
+  ]},
+  {w:3,ph:'b1',badge:'基礎期',focus:'上坡閾值首次增至 30min；10K 配速跑穩定輸出',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'30min 持續'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',  detail:'10K @ MP+20s'},
+    {t:'long',     label:'Long',sub:'山路長跑',detail:'120min'},
+  ]},
+  {w:4,ph:'rec',badge:'減量',focus:'降量恢復週；Key1 輕量維持感覺，配速跑延長至 12K',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值（輕）',detail:'20min 輕量'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',        detail:'12K @ MP+30s'},
+    {t:'long',     label:'Long',sub:'山路輕鬆跑',    detail:'70min'},
+  ]},
+  {w:5,ph:'b2',badge:'強化期',focus:'進入第二建立期，閾值增至 30min；配速跑增至 14K',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'30min 持續'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',  detail:'14K @ MP+30s'},
+    {t:'long',     label:'Long',sub:'山路長跑',detail:'130min'},
+  ]},
+  {w:6,ph:'b2',badge:'強化期',focus:'閾值增強至 40min；16K 配速跑強化馬拉松節奏感',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'40min 持續'},
+    {t:'tempo',    label:'Key2',sub:'配速跑',  detail:'16K @ MP+30s'},
+    {t:'long',     label:'Long',sub:'山路長跑',detail:'145min'},
+  ]},
+  {w:7,ph:'b2',badge:'強化期',focus:'Key2 轉換為 400m 間歇；上坡閾值持平，長跑達 160min',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值（持平）',detail:'40min 持續'},
+    {t:'interval', label:'Key2',sub:'400m 間歇',       detail:'400m × 14 @ 5K配速'},
+    {t:'long',     label:'Long',sub:'山路長跑',        detail:'160min'},
+  ]},
+  {w:8,ph:'rec',badge:'減量',focus:'間歇銜接降量週；400m×16 鞏固速度儲備，長跑降至 85min',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值（輕）',detail:'20min 輕量'},
+    {t:'interval', label:'Key2',sub:'400m 間歇',     detail:'400m × 16 @ 5K配速'},
+    {t:'long',     label:'Long',sub:'山路輕鬆跑',   detail:'85min'},
+  ]},
+  {w:9,ph:'b3',badge:'巔峰期',focus:'第三建立期，上坡閾值回 40min；400m×18 推進間歇量',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'40min 持續'},
+    {t:'interval', label:'Key2',sub:'400m 間歇',detail:'400m × 18 @ 5K配速'},
+    {t:'long',     label:'Long',sub:'山路長跑', detail:'165min'},
+  ]},
+  {w:10,ph:'b3',badge:'巔峰期',focus:'上坡閾值持平；400m×20 本週期最大間歇量，長跑 175min',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值（持平）',detail:'40min 持續'},
+    {t:'interval', label:'Key2',sub:'400m 間歇',       detail:'400m × 20 @ 5K配速'},
+    {t:'long',     label:'Long',sub:'山路長跑',        detail:'175min'},
+  ]},
+  {w:11,ph:'b3',badge:'巔峰期',focus:'上坡閾值峰值 50min；800m 間歇轉入，長跑達最高 180min',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',detail:'50min 持續'},
+    {t:'interval', label:'Key2',sub:'800m 間歇',detail:'800m × 6 @ 10K配速'},
+    {t:'long',     label:'Long',sub:'山路長跑', detail:'180min'},
+  ]},
+  {w:12,ph:'rec',badge:'減量',focus:'第三降量；800m×8 維持速度感，長跑降至 100min',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值（輕）',detail:'20min 輕量'},
+    {t:'interval', label:'Key2',sub:'800m 間歇',     detail:'800m × 8 @ 10K配速'},
+    {t:'long',     label:'Long',sub:'山路輕鬆跑',   detail:'100min'},
+  ]},
+  {w:13,ph:'taper',badge:'賽前減量',focus:'賽前減量；長跑含配速段模擬比賽節奏，確認裝備與補給策略',
+   sessions:[
+    {t:'threshold',label:'Key1',sub:'上坡閾值',              detail:'20min'},
+    {t:'interval', label:'Key2',sub:'800m 間歇',             detail:'800m × 10 @ 10K配速'},
+    {t:'long',     label:'Long',sub:'山路長跑（含配速段）',  detail:'120min'},
+  ]},
+  {w:14,ph:'race',badge:'比賽週',focus:'賽前最後輕量間歇，保存能量迎戰 30K 越野賽',
+   sessions:[
+    {t:'rest',    label:'Key1',sub:'全休備賽',detail:'—'},
+    {t:'interval',label:'Key2',sub:'800m 間歇',detail:'800m × 6 @ 5K配速'},
+    {t:'race',    label:'Long',sub:'🏆 比賽日',detail:'30K 越野賽'},
+  ]},
+];
 
+// ── Week card builder ──
+const DN = ['一','二','三','四','五','六','日'];
+
+function buildDay(d){
+  const el = document.createElement('div');
+  el.className = `day dt-${d.t}`;
+  el.onclick = () => openDetail(d);
+  let h = `<div class="d-name">${d._dn}</div><div class="d-act">${d.a}</div>`;
+  if(d.v) h += `<div class="d-venue">${d.v}</div>`;
+  el.innerHTML = h;
+  return el;
+}
+
+function buildCard(w){
+  const cls = {b1:'ph-b1',b2:'ph-b2',b3:'ph-b3',rec:'ph-rec',taper:'ph-taper',race:'ph-race'}[w.ph]||'ph-rec';
+  const pct = Math.round(w.w/14*100);
+  const [k1,k2,lr] = w.sessions;
+  const c = document.createElement('div');
+  c.className = `wcard ${cls}`;
+  c.dataset.ph = w.ph;
+  const head = document.createElement('div');
+  head.className = 'wcard-head';
+  head.setAttribute('data-wnum', String(w.w).padStart(2,'0'));
+  head.innerHTML = `<span class="w-num">W${String(w.w).padStart(2,'0')}</span><span class="w-badge">${w.badge}</span><span class="w-focus">${w.focus}</span><span class="w-km">${lr.detail}</span><div class="w-prog"><div class="w-prog-fill" style="width:${pct}%"></div></div>`;
+  c.appendChild(head);
+  const body = document.createElement('div');
+  body.className = 'wcard-body';
+  const grid = document.createElement('div');
+  grid.className = 'day-grid';
+  const days = [
+    {t:'easy',    a:'輕鬆跑', v:''},
+    {t:k1.t,      a:k1.sub,   v:k1.detail},
+    {t:'rest',    a:'全休',   v:''},
+    {t:k2.t,      a:k2.sub,   v:k2.detail},
+    {t:'easy',    a:'輕鬆跑', v:''},
+    {t:lr.t,      a:lr.sub,   v:lr.detail},
+    {t:'rest',    a:'全休',   v:''},
+  ];
+  days.forEach((d,i)=>{ d._dn=DN[i]; d._w=w.w; grid.appendChild(buildDay(d)); });
+  body.appendChild(grid);
+  c.appendChild(body);
+  return c;
+}
+
+// ── Detail modal ──
 function openDetail(d){
   const cat = CATS[d.t] || CATS.rest;
   const mCat = document.getElementById('mdCat');
   mCat.textContent = cat.label;
   mCat.style.cssText = `background:${cat.bg};color:${cat.fg}`;
-  document.getElementById('mdAct').textContent = d.a;
-  const meta = [`W${String(d._w||'').padStart(2,'0')} 週${d._dn||''}`, d.v, [d.km,d.e].filter(Boolean).join(' ')].filter(Boolean);
-  document.getElementById('mdMeta').textContent = meta.join(' · ');
+  document.getElementById('mdAct').textContent = d.sub || d.a || '';
+  const wStr = d._w ? `W${String(d._w).padStart(2,'0')}` : '';
+  const dayStr = d._dn ? `週${d._dn}` : '';
+  const detailStr = d.v || (d.detail && d.detail !== '—' ? d.detail : '');
+  const metaParts = [wStr, dayStr, detailStr].filter(Boolean);
+  document.getElementById('mdMeta').textContent = metaParts.join(' · ');
 
   let html = '';
   if(cat.rpe){
@@ -500,21 +412,6 @@ function openDetail(d){
   html += `<div class="md-sec"><div class="md-sec-lbl">說明</div><div class="md-sec-txt">${cat.desc}</div></div>`;
   html += `<div class="md-sec"><div class="md-sec-lbl">執行重點</div><ul class="md-tips">${cat.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;
 
-  if(d.str){
-    const key = d.str.replace('↓','');
-    const s = STR[key];
-    if(s){
-      const reduced = d.str.includes('↓');
-      html += `<div class="md-str">
-        <div class="md-str-role">${s.role}</div>
-        <div class="md-str-phase">${s.phase}${reduced?' · 本週降量 ~40%':''}</div>
-        <span class="md-str-dose">${s.dose}</span>
-        <ul class="md-str-list">${s.moves.map(m=>`<li>${m}</li>`).join('')}</ul>
-        <div class="md-str-note">${s.note}</div>
-      </div>`;
-    }
-  }
-
   document.getElementById('mdBody').innerHTML = html;
   document.getElementById('mdOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -525,6 +422,11 @@ function closeDetail(){
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeDetail(); });
+
+function renderWeeks(){
+  const list = document.getElementById('weekList');
+  weeks.forEach(w => list.appendChild(buildCard(w)));
+}
 
 let cur = 'all';
 function filterPhase(btn, ph){

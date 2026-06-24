@@ -36,6 +36,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .sec-eye{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px;}
 .sec-title{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--text-1);margin-bottom:24px;}
 .pace-intro{font-size:14px;color:var(--text-2);margin-bottom:20px;max-width:700px;line-height:1.65;}
+.sub-title{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text-1);margin:28px 0 12px;}
 .pace-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;}
 .pc-row{display:grid;grid-template-columns:1.5fr .8fr 1.5fr 2fr;border-bottom:1px solid var(--border);}
 .pc-row:last-child{border-bottom:none;} .pc-row.hdr{background:var(--surface-2);}
@@ -67,7 +68,8 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
   <section class="section">
     <div class="sec-eye">PACING GUIDE</div>
     <h2 class="sec-title">配速指南</h2>
-    <p class="pace-intro">越野跑不看每公里配速，看<strong>自覺努力程度（RPE）</strong>或心率。爬升多的 30K 賽事通常在陡坡段必須切換成<strong>健行步伐（Power Hike）</strong>——保住心率才能跑好後半段。</p>
+    <p class="pace-intro">越野跑以<strong>自覺努力程度（RPE）</strong>或心率為準；公路跑課表（Key2 配速跑、間歇）則依 <strong>Jack Daniels VDOT</strong> 配速區間執行。</p>
+    <div class="sub-title">越野跑 · RPE 自覺努力基準</div>
     <div class="pace-table">
       <div class="pc-row hdr">
         <div class="pc-cell h">訓練類型</div>
@@ -106,10 +108,51 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
         <div class="pc-cell">所有陡坡改快走，抵頂後才恢復跑步，保護後半段</div>
       </div>
     </div>
+
+    <div class="sub-title">公路跑 · Jack Daniels VDOT 配速</div>
+    <p class="pace-intro" style="margin-bottom:12px">以 VDOT 為基礎的公路跑配速，適用於 Key2 配速跑、間歇等結構化課表，不適用於越野上坡段。</p>
+    <div class="pace-table">
+      <div class="pc-row hdr">
+        <div class="pc-cell h">類型</div>
+        <div class="pc-cell h">配速 /km</div>
+        <div class="pc-cell h">對應課表</div>
+        <div class="pc-cell h">說明</div>
+      </div>
+      <div class="pc-row">
+        <div class="pc-cell"><strong>Easy</strong></div>
+        <div class="pc-cell"><span class="rpe" style="background:#E8F3DA;color:#1E4007">5:37–6:11</span></div>
+        <div class="pc-cell">輕鬆跑 / 恢復跑</div>
+        <div class="pc-cell">輕鬆有氧，可完整說話；週間恢復與長跑使用</div>
+      </div>
+      <div class="pc-row">
+        <div class="pc-cell"><strong>Marathon (MP)</strong></div>
+        <div class="pc-cell"><span class="rpe" style="background:#E3EFFC;color:#0A3D78">4:59</span></div>
+        <div class="pc-cell">Key2 配速跑基準</div>
+        <div class="pc-cell">Key2 配速跑目標（訓練通常在 MP+20–30s 執行）</div>
+      </div>
+      <div class="pc-row">
+        <div class="pc-cell"><strong>Threshold (T)</strong></div>
+        <div class="pc-cell"><span class="rpe" style="background:#E3EFFC;color:#0A3D78">4:40</span></div>
+        <div class="pc-cell">節奏跑 / 上坡閾值</div>
+        <div class="pc-cell">乳酸閾值強度，說話只能說短句；節奏跑與閾值課表</div>
+      </div>
+      <div class="pc-row">
+        <div class="pc-cell"><strong>Interval (I)</strong></div>
+        <div class="pc-cell"><span class="rpe" style="background:#FDF1E1;color:#6B3F09">4:18</span></div>
+        <div class="pc-cell">400m / 800m 間歇</div>
+        <div class="pc-cell">VO₂max 區間，幾乎無法說話；間歇跑 Key2 目標配速</div>
+      </div>
+      <div class="pc-row">
+        <div class="pc-cell"><strong>Repetition (R)</strong></div>
+        <div class="pc-cell"><span class="rpe" style="background:#FCECE9;color:#AA2C1A">4:03</span></div>
+        <div class="pc-cell">短距衝刺 / 加速跑</div>
+        <div class="pc-cell">最高速度輸出，組間需充分恢復；賽前活化使用</div>
+      </div>
+    </div>
   </section>
 </div>
 
-<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.3.0</span></footer>
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.4.0</span></footer>
 
 </body>
 </html>
