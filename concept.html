@@ -49,9 +49,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,242,237,.9);backdrop-f
 .po-col .po-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
 .po-col .po-run{font-size:12px;font-weight:600;margin-bottom:4px;} .po-col .po-str{font-size:11px;}
 .po-col.c1{background:var(--amber-lt);} .po-col.c1 .po-lbl{color:#6B3F09;} .po-col.c1 .po-run,.po-col.c1 .po-str{color:var(--amber);}
-.po-col.c2{background:var(--purple-lt);} .po-col.c2 .po-lbl{color:#4A1257;} .po-col.c2 .po-run,.po-col.c2 .po-str{color:var(--purple);}
-.po-col.c3{background:var(--teal-lt);} .po-col.c3 .po-lbl{color:#063D2C;} .po-col.c3 .po-run,.po-col.c3 .po-str{color:var(--teal);}
-.po-col.c4{background:var(--gray-lt);} .po-col.c4 .po-lbl{color:#322F2B;} .po-col.c4 .po-run,.po-col.c4 .po-str{color:var(--gray);}
+.po-col.c2{background:var(--teal-lt);} .po-col.c2 .po-lbl{color:#063D2C;} .po-col.c2 .po-run,.po-col.c2 .po-str{color:var(--teal);}
+.po-col.c3{background:var(--purple-lt);} .po-col.c3 .po-lbl{color:#4A1257;} .po-col.c3 .po-run,.po-col.c3 .po-str{color:var(--purple);}
+.po-col.c4{background:var(--blue-lt);} .po-col.c4 .po-lbl{color:#0A3D78;} .po-col.c4 .po-run,.po-col.c4 .po-str{color:var(--blue);}
 footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;font-size:12px;color:var(--text-3);max-width:1160px;margin:0 auto;}
 @media(max-width:860px){.page-top{padding-left:16px;padding-right:16px;}.intro-grid{grid-template-columns:1fr;}.phase-overview{grid-template-columns:repeat(2,1fr);}.nav-links{gap:12px;overflow-x:auto;flex-wrap:nowrap;}}
   </style>
@@ -77,50 +77,49 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;fo
     <div class="intro-grid">
       <div class="intro-card">
         <div class="intro-card-eye">原則一</div>
-        <div class="intro-card-title">從一般到專項</div>
+        <div class="intro-card-title">地形依課表類型分配，不依週期階段分配</div>
         <div class="intro-card-body">
-          跑步與肌力的刺激方向同步從「一般」轉向「越野專項」。第一期在公路環境建立可量化的有氧基底；第二期引入坡道刺激 VO₂max；第三期完全進入越野地形，讓前兩期的體能轉化成比賽能力。<br><br>
-          每一期只集中一個刺激方向，因為<strong>身體無法同時對多種截然不同的訓練刺激產生最佳適應</strong>，在一個窗口期內聚焦，效果遠好於分散。
+          借用 Kilian Jornet 課表的核心邏輯——地形專項化不是「先公路、後越野」的時間軸問題，而是「哪種刺激本來就需要地形」的本質問題。<strong>Key1（上坡閾值）固定在山路</strong>，從第一週開始就在地形上練，因為爬坡的肌肉徵召、心肺負荷沒有地形練不到；<strong>Key2（平路速度課）固定在平路</strong>，因為配速需要乾淨的回饋，山路會干擾配速判讀；<strong>長跑固定在山路、時間導向</strong>，模擬比賽的爬升與離心負荷。三個課表從 W1 到比賽週，地形角色都不更換。
         </div>
       </div>
       <div class="intro-card">
         <div class="intro-card-eye">原則二</div>
-        <div class="intro-card-title">肌力 A／B 不是強度高低，是角色分工</div>
+        <div class="intro-card-title">Key1 維持單一目的，Key2 採用全馬課表的強度演進</div>
         <div class="intro-card-body">
-          DOMS／恢復時間由三個變數共同決定：<strong>離力竭距離（RIR）、離心節奏（Tempo）、訓練容積（組數）</strong>。肌力 A（週一）三者同時收斂，確保不影響隔天關鍵課表；肌力 B（週四）依週期目標決定強度與容積，並承擔所有刻意放慢的離心動作——因為這天的恢復緩衝最大。
-          <div class="stat-hl">
-            <div class="sh-item"><div class="sh-val">r = 0.91</div><div class="sh-lbl">肌耐力 × 越野成績</div></div>
-            <div class="sh-item"><div class="sh-val">r = 0.76</div><div class="sh-lbl">VO₂max × 越野成績</div></div>
-          </div>
+          Key1 全程只服務一個目的——<strong>閾值刺激</strong>，用「總爬坡時間」增加趟數來漸進，不切換訓練性質，因為地形本身已提供足夠專項度，不需要疊加強度轉換的複雜度。Key2 借用全馬課表「<strong>配速跑先行、反覆跑後置</strong>」的順序：前段用 LT2 配速跑（距離漸增、配速逐步貼近 MP），中後段轉換成 400m／800m 反覆跑（強度轉向 VO₂max），對應一個跑者由「延長閾值容忍度」到「拉高速度上限」的能力轉換路徑。
         </div>
       </div>
     </div>
     <div class="phase-overview">
       <div class="po-col c1">
-        <div class="po-lbl">第一期 基礎 W1–3</div>
-        <div class="po-run">跑：公路 LT2 節奏跑</div>
-        <div class="po-str">肌力：最大肌力</div>
+        <div class="po-lbl">第一期 基礎 W1–4</div>
+        <div class="po-str">Key1：上坡閾值 2–3 趟</div>
+        <div class="po-str">Key2：配速跑 8–10K（MP+30→20s）</div>
+        <div class="po-str">長跑：90–120min</div>
       </div>
       <div class="po-col c2">
-        <div class="po-lbl">第二期 進展 W5–7</div>
-        <div class="po-run">跑：坡道 VO₂max 間歇</div>
-        <div class="po-str">肌力：爆發力 / 功能性</div>
+        <div class="po-lbl">第二期 強化 W5–8</div>
+        <div class="po-str">Key1：上坡閾值 3–4 趟</div>
+        <div class="po-str">Key2：配速跑 11–12K → 400m 反覆</div>
+        <div class="po-str">長跑：120–150min</div>
       </div>
       <div class="po-col c3">
-        <div class="po-lbl">第三期 強化 W9–11</div>
-        <div class="po-run">跑：越野 LT2 節奏</div>
-        <div class="po-str">肌力：肌耐力</div>
+        <div class="po-lbl">第三期 巔峰 W9–12</div>
+        <div class="po-str">Key1：上坡閾值 4–5 趟</div>
+        <div class="po-str">Key2：400m／800m 反覆持續加量</div>
+        <div class="po-str">長跑：160–180min</div>
       </div>
       <div class="po-col c4">
-        <div class="po-lbl">第四期 減量 W12–14</div>
-        <div class="po-run">跑：各刺激維持感覺</div>
-        <div class="po-str">肌力：活化</div>
+        <div class="po-lbl">賽前＋比賽 W13–14</div>
+        <div class="po-str">Key1：收量 4→3 趟</div>
+        <div class="po-str">Key2：收量至 800m×6／4 組</div>
+        <div class="po-str">長跑：收量 160→140min</div>
       </div>
     </div>
   </section>
 </div>
 
-<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.4.0</span></footer>
+<footer>嶺線計畫 RIDGELINE 30K &emsp;·&emsp; 14 週越野跑訓練課表 &emsp;·&emsp; <span style="font-family:var(--fm);font-size:11px;background:var(--green-lt);color:var(--green);padding:2px 8px;border-radius:100px;letter-spacing:.06em;">v1.4.2</span></footer>
 
 </body>
 </html>
